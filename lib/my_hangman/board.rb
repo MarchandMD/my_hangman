@@ -17,7 +17,7 @@ module MyHangman
     end
 
     def display_solution(solution = self.solution)
-      solution
+      puts solution
     end
   end
 end

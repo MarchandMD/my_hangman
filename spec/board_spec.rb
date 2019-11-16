@@ -12,9 +12,16 @@ module MyHangman
     end
 
     context '#available_letters' do
-      it "displays A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" do
+      it 'displays A B C D E F G H I J K L M N O P Q R S T U V W X Y Z' do
         new_board = Board.new
         expect { new_board.available_letters }.to output { 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z' }.to_stdout
+      end
+    end
+
+    context '#display_solution' do
+      it 'displays the solution as the Solution object' do
+        gameboard = Board.new
+        expect(gameboard.display_solution).to be_a(Solution)
       end
     end
   end

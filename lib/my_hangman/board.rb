@@ -8,12 +8,9 @@ module MyHangman
       @letters = letters
     end
 
-    def display
+    def available_letters
       print "#{@letters.join(' ')}\n\n"
-      puts "hello there"
+      puts 'hello there'
     end
   end
 end
-
-board = MyHangman::Board.new
-board.display

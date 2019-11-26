@@ -9,21 +9,20 @@ module MyHangman
         new_board = Board.new
         expect(new_board).to be_truthy
       end
-    end
 
-    context "#available_letters" do
-      it "displays A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" do
+      it 'has an array of the entire alphabet' do
         new_board = Board.new
-        expect { new_board.available_letters }.to output { "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" }.to_stdout
+        expect(new_board.letters).to be_an(Array)
       end
     end
 
-    context "#display_solution" do
-      it "displays the solution as the @solution variable Solution object" do
-        gameboard = Board.new
-
-        expect { gameboard.display_solution }.to output("hangman").to_stdout
+    context '#remove_letter' do
+      it 'replaces a letter with an empty string' do
+        new_board = Board.new
+        new_board.remove_letter(0)
+        expect(new_board.letters[0]).to eq(' ')
       end
     end
+
   end
 end

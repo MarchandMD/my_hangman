@@ -175,3 +175,115 @@ So that's how I'd use it in RSpec...
 Ok, so i feel like this will take a lot more focus than I'm willing to give right now. 
 
 But I am totally willing to work on one of my other projects....like the mastermind_bendee, or the events_manager project...so i'll switch to one of those...
+
+Wow...I really went down a different path than I would have expected when I was doing this the first time. 
+
+I sort of have to go back and take a look at what I have been doing with this, to find out where I am. 
+
+This is a good opportunity for me to also review the tests I currently have, and also maybe add some more functionality to the methods to allow me to test them....
+
+Ok, so I've done a couple of things, since getting the program to it's current place. 
+
+And I've attempted to do a couple of different htings, in terms of the overall appearance of the game...but I'd like to begin to focus on the behavior of the program. 
+
+that is: I want to write the classes, and think about the objects, and how the interact with themselves and each other. 
+
+So, here's what I do have:
+
+I have a `MyHangman::Board` object instantiated in IRB. And I'm able to play around with it, and sort of figure out what it is, and what I want it to do. 
+
+Now, as a rookie, the thing I like to focus on, or feel like I need to focus on, is the "tangible"...the "tactile"...the thing I can see. And that's the output to the screen. It's tough to move beyond that, because I rely on visuals frequently. 
+
+ok...so I'm looking at the `Board` class first, because I feel like it's a conceptually easier place to sort of begin
+
+Because what does the `Board` need? 
+
+I've sort of already outlined that, at the begining of this article: 
+
+And this is what I said there: 
+
+The `Board` needs to: 
+
+1. Display the available letters
+2. Update the available letters
+
+As far as the Board displaying the hangman character, and updating the hangman character...i'm not sure if that's necessasry to focus on now....I just...I'd rather have the program function properly. 
+
+So I guess the natural place to start, is having the board display the letters of the alphabet...
+
+Ok, so I'm at the point of creating a method to remove a letter
+
+to remove a letter, I'd need: 
+
+1. a reference to the available letters
+2. an index number
+
+Now, I expect the input to come in as a typed letter, so a string from the user. 
+
+so the user will type "a", or "A" and I'd need to: 
+
+1. convert it to either upper-case or lower-case
+2. determine if it's an available letter
+3. if it's not available as a guess, prompt for a new guess
+4. if it is available as a guess, remove it from the available letters
+
+Some other things I may need to do are: 
+
+1. compare the guess to the solution
+2. populate the board with the guess letter
+3. populate the hangman with a new body part
+
+But for now, I want to stay small and manageable. 
+
+I want a method to update the available letters. 
+
+Do I want to simply remove a letter? that'd be easy. 
+
+```ruby
+def remove_letter(index)
+   board.letters[index] = ' '
+end
+```
+
+theoretically, that's the easiest method. 
+
+Then this begs the question, where does the `index` parameter come from?
+
+Well, to start, I can test this. And I can test this by giving the index an optional parameter, which will allow me to test it
+
+```ruby
+def remove_letter(index = nil)
+  board.letters[index] = ' '
+end
+```
+
+So now...I can test this method. 
+
+Ok, so yeah; I'm able to remove the letters. 
+
+So what I want to do...is pass a `Guess` object to the `#remove_letter` method, in game play. 
+
+so the idea is: 
+
+* the user will somehow be prompted for a guess (I don't care about how right now...)
+* Then they will type a letter into the terminal line
+
+So at this point, I feel like I'd need to do a couple of things with this input. 
+
+For example: 
+
+1. standardize the input (make it either downcase or upcase, confirm it's length is only one; )
+2. reject it (it's not included in the board.letters object, because it's already been guessed or because it's not a letter)
+
+So, as I think about this, I know that I need to have these small functionalities...these individual methods....but then pulling them together into game play is more of the engine. 
+
+so it's like, i'm constantly thinking about, or considering the engine. But I don't really need to think about it right now...because what I really want to do downstream is be able to:
+
+```ruby
+game = Game.new
+game.play
+```
+
+And this suggests that I have:
+
+```ruby

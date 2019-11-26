@@ -11,13 +11,12 @@ module MyHangman
       @solution = Solution.new
     end
 
-    def available_letters
-      print "#{@letters.join(' ')}\n\n"
-      puts 'hello there'
+    def remove_letter(index = nil)
+      letters[index] = ' '
     end
 
     def display_solution(solution = self.solution)
-      puts solution
+      puts solution.value
     end
   end
 end

@@ -369,4 +369,54 @@ And so now, I think about the TicTacToe author saying something about not gettin
 
 And so this feeling is something I should trust. But I need to go ahead and go this route, so I understand why it's a bad idea, or why it's frowned upon, or how I'm making my tests/program too difficult...
 
-And then it'll be easier to 
+And then it'll be easier to "zoom out" a little bit...or 'pull focus' a little higher...
+
+yeah, so this is kind of the thing....when I do the `#get_guess` method, I actually want to be creating a `Guess` object....so..this is the difficult part of it...
+
+I've seen a couple of examples...so I don't really know what I'm trying to do...how I need to articulate it up. So i'll keep moving forward with this validation....
+
+Ok...so the validation and the prompting sort of need to be combined. Because if they're combined, then I can loop and prompt...or prompt and loop if necessary....
+
+Ok, so now that I have create a `#prompt` method, I feel like it isn't a behavior of the `Guess` object. 
+
+I mean, yes, the `#prompt` is intended to get a `Guess` from the person, but that just means that the `Guess` should be a byproduct of the method...and not something that comes from within the class. 
+
+So then, where should this method be? 
+
+I feel like this is a method for the `Game` class. Because it's part of the Game-play. So then the I should be able to prompt.....but I'm prompting the player. 
+
+So then it'd be something I need to do for the player. 
+
+that seems to make more sense to me. 
+
+Because what I'd like to do is: 
+
+```ruby
+player.prompt
+```
+
+And then i'm getting input from them. 
+
+So then, what would I need to do to add this? 
+
+ok...so..I'm created an instance method for the `Player` class...and the only thing I'm doing is giving them a name, that's all. 
+
+And I think I'm going to comment out a lot of the `#prompt` method, because it is a little confusing, and I want to slowly build it up with red-green testing...
+
+Hmm, ok...so now I have a working `Player#prompt` method....and I feel like I should probably write a littlem more about this. since I had to do a little work for it. 
+
+```ruby
+def prompt(input = nil)
+  puts "Please enter a single letter: "
+  loop do
+    input ||= gets.chomp
+    if input.length != 1
+      puts "invalid selection. Try again: "
+      input = nil
+    else
+      break
+    end
+  end
+  input
+end
+```

@@ -287,3 +287,86 @@ game.play
 And this suggests that I have:
 
 ```ruby
+class Game
+
+	def initialize
+	end
+	
+	def play
+	end
+
+end
+```
+
+ok. So that's kind of what I'm driving towards. 
+
+Now, i want to continue building the rest of the "roadmap" to getting there. 
+
+I want an object to represent a guess, because I'm going to be doing a number of things with that guess. 
+
+Also, while I'm thinking about it, part of the `play` method...or part of the game-play will be giving the player a chance to solve the puzzle. 
+
+But that's downstream stuff for now. 
+
+For now, what I'd like to focus on is the `Guess` object. 
+
+Becaue the guess object is going to be a single letter. Or it's supposed to be a single letter. 
+
+So then I can initialize a `Guess` object, and it should have a `:value`. 
+
+Ok, so what I've been doing is...attempting to alter the instance variable, within the instantiation method. 
+
+But that seems like a bad idea. 
+
+Because what am I doing? I'm just attempting to validate the input. 
+
+So, since the class is the only thing that's going to be doing this, can i go ahead and make this a private method? 
+
+I mean, I don't know that I need to worry about public/private just yet...but I can create a method that does what I need it to. 
+
+```ruby
+def standardize(input = '')
+  # ok here it goes
+end
+
+```
+
+So, the idea is...I want to take the `guess.value` ( or I could probably pass it as `value`) and then make sure it's only one character long, and upcase it....
+
+The easiest thing to do, is to start with a call to `.upcase!`.
+
+Ok, so just like that, I begin trying to do too much. 
+
+I just want this `#standardize` method to turn the `guess.value` to an uppercase letter. So that's the only thing I need to be doing right now. 
+
+Ok, so now I've got some red that I need to take care of....
+
+so I go over to the method...
+
+Because i'm not prompting the user for anything, I don't need to do any sort of loop. 
+
+But maybe that is where I'm at...the prompt for the input. 
+
+Because what I want to do is ask for input. 
+
+And if the input isn't valid, then I want to ask again. 
+
+And I think this is sort of where Mocks come from, but I'm not certain. I mean, I think I can manipulate how the test runs....
+
+Because it feels like...validating the input is a loopy thing. 
+
+like, i'll loop to request input, and if the input is incorrect, then I'll redo the loop....or if it is correct, i'll set the `@value` variable of the guess. 
+
+Now, I think...Um, I want to prompt, and I also want to validate, and standardize...
+
+* So prompting requires just asking for input.  
+* Getting the information is something different. 
+* Validation requires making sure there's only one character, and that the character is a letter of the alphabet
+
+So, the validation is sort of what I'm doing...or want to do now...
+
+And so now, I think about the TicTacToe author saying something about not getting too granular with my tests. 
+
+And so this feeling is something I should trust. But I need to go ahead and go this route, so I understand why it's a bad idea, or why it's frowned upon, or how I'm making my tests/program too difficult...
+
+And then it'll be easier to 

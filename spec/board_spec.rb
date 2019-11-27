@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "spec_helper.rb"
+require 'spec_helper.rb'
 
 module MyHangman
   RSpec.describe Board do
-    context "#initialize" do
-      it "creates a board object" do
+    context '#initialize' do
+      it 'creates a board object' do
         new_board = Board.new
         expect(new_board).to be_truthy
       end
@@ -23,6 +23,5 @@ module MyHangman
         expect(new_board.letters[0]).to eq(' ')
       end
     end
-
   end
 end

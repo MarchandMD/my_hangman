@@ -420,3 +420,58 @@ def prompt(input = nil)
   input
 end
 ```
+
+```ruby
+puts "please enter a single letter: '
+```
+obvious. next:
+
+```ruby
+loop do
+```
+I want to start a loop now. Because the thing that I want to do repeatedly is get user input if it's not correct. so then...next:
+
+```ruby
+input ||= gets.chomp
+```
+I'm pretty sure that what this means is "assign the value of `gets.chomp` to the `input` variable, if `input` doesn't already have a value. 
+
+The reason I'm doing it like this is....for testing purposes. I should be able to pass a parameter to the method call like `Player#prompt('ab')` and get a response that I expect in the testing environment. So i'm going to do that now. 
+
+Ok, so now I want to review how I hide the output to the terminal when I'm testing...
+
+So, it's this line that I add to the `spec_helper.rb` file:
+
+```ruby
+# suppress $STDOUT in terminal
+  config.before { allow($stdout).to receive(:puts) }
+```
+
+## 11/27/2019
+Ok, so I have RSpec setup the way I like it (to not display output streams)...and I have a working loop to accept input...
+
+but I think what's important now is...the idea that I have a working loop, that get's the guess from the user. 
+
+It's not complete...but adding to it, I think, will be a little easier, now that I have a working loop. 
+
+And how did I get to the working loop?
+
+Instead of testing 100% to the correct answer, I used a combination of testing and the IRB....and requiring the file that held the question I was wondering about. And then I was instantitating individual instances of that class, to see how the method was behaving. 
+
+And I think I made some real progress, in terms of understanding how to build a loop like the one I did. 
+
+Now what I was doing was ripping apart every line in the loop and artciulating it's purpose. I'll pick up where I left off. 
+
+```ruby
+if input.length != 1
+```
+
+So before, I was trying to do something "fancy" with `!input.length`...but this conditional statement is so much easier to understand. I also feel like I'll be able to add to the conditional. Because I want to further validate the kind of input the user may supply. I want to limit the input to being an available letter. 
+
+So part of me wants to use the `Board` object I was creating, and call the `#available_letters` method. Or just the `#letters/@letters` instance variable on the board. Because I'm going to be updating the content of the `@letters` through out the game, and then i can do something like: 
+
+```ruby
+if input.length != 1 && !board.letters.include?(input)
+```
+
+And I think, based on the scope...the method...does the method *not* have the ability to reference the `Board` object though? All these small ideas that I'm attempting to use are being solidified in my brain as I build my first program. 

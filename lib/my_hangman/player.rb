@@ -8,7 +8,8 @@ module MyHangman
       @name = name
     end
 
-    def prompt(input = nil)
+    #  && !board.letters.include?(input): to be added later to the conditional statement
+    def prompt(input = nil, board = nil)
       puts 'Please enter a single letter: '
       loop do
         input ||= gets.chomp

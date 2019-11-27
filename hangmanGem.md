@@ -474,4 +474,51 @@ So part of me wants to use the `Board` object I was creating, and call the `#ava
 if input.length != 1 && !board.letters.include?(input)
 ```
 
-And I think, based on the scope...the method...does the method *not* have the ability to reference the `Board` object though? All these small ideas that I'm attempting to use are being solidified in my brain as I build my first program. 
+And I think, based on the scope...the method...does the method *not* have the ability to reference the `Board` object though? All these small ideas that I'm attempting to use are being solidified in my brain as I build my first program. I could probably pass the object in as a parameter?
+
+```ruby
+puts "Invalid selection. Try again: "
+input = nil
+```
+
+Obviously the first line is self-explanatory. 
+
+The second line though, I want to explain in this context...
+
+So the two lines above are from the `if` branch in my conditional statement. And this `if` statement is inside a `loop`. 
+
+The `loop` will, starting from the 1st line after the `loop do` line, and will do everything inside of it. So, looking at my `loop` statement, the `loop` will do these things: 
+
+```ruby
+input ||= gets.chomp
+	if input.length != 1
+	  puts 'invalid selection. Try again: '
+	  input = nil
+```
+
+thse are lines 1..4 inside the `loop do` line. And so if the `input` (which is a parameter) is not a single character long, then Ruby will put "invalid selection, Try again: ". Then Ruby will **reset** the `input` variable (which was originally passed as a parameter) to equal `nil`. 
+
+The next line of the `loop` is `else` which is the `else` of the `if` statement. I'm not going to discuss that right now, because it's not relevant to this current example, yet. But I should say that there is nothing else in the `if/else` statement, and nothing else in the `loop` statement...so the next relevant line that Ruby would encounter is the `end` statement of the `if` statement, followed closely by the `end` statement of the `loop`. 
+
+This means that Ruby would then go back to the first line inside the `loop`...which is: 
+
+```ruby
+input ||= gets.chomp
+```
+
+So then, what does Ruby do? 
+
+Well, this line says that if `input` already has a value, leave it be. Otherwise, `input == gets.chomp`. So I have an opportunity to set the value of `input` within the loop....so I'm sort of...interrupting the automatic behavior of the `loop`....and forcing it to wait for input from the borrower. 
+
+Now, what if the conditional statement is false? What if the `input.length == 1`? 
+
+Well, this would push the flow of the `loop` statement to the `else` branch of the `if` statement...
+
+```ruby
+  else
+    break
+  end    
+end
+```
+
+So if the `input.length` is in fact equal to 1, break the loop

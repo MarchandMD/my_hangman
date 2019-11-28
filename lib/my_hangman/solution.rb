@@ -4,7 +4,7 @@ module Hangman
   class Solution
     attr_accessor :value
 
-    def initialize(value = 'hangman')
+    def initialize(value = 'HANGMAN')
       @value = value
     end
 

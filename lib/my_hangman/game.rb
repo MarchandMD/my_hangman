@@ -1,15 +1,31 @@
 # frozen_string_literal: true
 
+require_relative 'solution'
+
 module Hangman
   class Game
-    attr_accessor :dontknow, :maybetwo, :maybenone
+    attr_accessor :solution, :maybetwo, :maybenone
 
     def initialize
-      # awesome code goes here
+      @solution = Solution.new
+    end
+
+    def introduction
+      puts "#{solution.value}\n\n"
+      puts '(p)lay'
+      puts '(i)structions'
     end
 
     def play
-      # awesome code goes here
+      introduction
+      user_choice
     end
+
+    def user_choice(input = nil)
+      input
+    end
+
+
+
   end
 end

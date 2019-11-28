@@ -538,3 +538,181 @@ Why would I put the `input` variable as the last line outside of the loop and ju
 Also, could I re-factor the `loop` statement to use `while`?
 
 I mean, I could, but why would I right now? I'll save the re-factoring for later. If it works now, use it, and move forward. 
+
+So what's next? 
+
+I guess I need to sort of get back into it. to get into the file...requires something. Requires some familiarity with what I'm doing, and where I left off. 
+
+so what was I doing? 
+
+I was attempting to build a `Guess` object...and the methods were sending me into a circle. that's why I decided to build a `Player#prompt` method. 
+
+so is my `Guess` object complete?
+
+I mean, the `Guess` object is meant to be a `String`...a single letter. Do I need to create an object for it then? 
+
+I mean, maybe. I have it now, so I'll leave it as it is. 
+
+Because in the TicTacToe gem, I needed a class...I needed a single object for the value of the Cell. Well, I needed a cell, and the cell ended up being it's own class. And that instance...that `Cell` object ended up containing a value. 
+
+So I like the idea of having a Guess object. 
+
+But the `Cell` object from the TicTacToe gem was used in a specific sort of way. 
+
+It was used to populate the game board. 
+
+So then how would I use the `Guess` object to populate an object in the Hangman game? 
+
+It's awesome when I ask a question like this, because I'm already thinking of the answer while I'm still typing the question!
+
+The answer I'm going to try first is: I'll use the `Guess` object when instantiating a `Solution` object. 
+
+I'll want to talk about this a little bit. 
+
+The `Solution` object will be the random word. It can be either auto-generated, or maybe, if I'm feeling over-achieving, I can allow the user to create the word and let the computer guess. 
+
+but for now, solution will be auto-created. And I think that's part of the assignment too....to use a dictionary of words and randomly select from the dictionary, and chose one word as the solution. 
+
+So then, the `Solution` object will need to have a `@word`. And whatever the length of the `Solution@word` is.....then I'll want to display the appropriate number of blank spaces on the game board. 
+
+So then, it isn't a `Guess` object that I want to make...it's a `Blank` object I'm creating...or a `Cell`..I mean, what's wrong with calling it `Cell`? or `Character` class? or a `Letter` class? 
+
+So then, it's not a `Guess`, it's a `Letter` class. 
+
+I know I'm maybe stalling a little bit, but I'm thinking about the movement of the program while I'm doing these small things. 
+
+Ok, so what do I want to do now? 
+
+I'm thinking about the solution. And what the solution should look like. 
+
+And thinking about that means, I'm thinking about how to display it. 
+
+So, what I'd like to display is a dash, sort of like this: 
+
+```ruby
+_ _ _ _ _ _ _
+```
+
+And then, when the player makes a correct guess, do something like: 
+
+```
+H _ _ _ _ _ _
+```
+
+So, to do this, requires first, an ability to know what the solution is. So the method, whatever method it is I'm building, will accept a parameter, and that parameter will be the solution. 
+
+So, there's a difference when I build: I need to build abstractly, sort of. Like, when building the program, I'm building the general behavior....and the engine will reflect the specific behavior. 
+
+so, can I build both at the same time? Like, the engine will eventually run the game....but it will use the objects I create, and specifically will use their state and behavior to interact with each other. 
+
+I feel like the "Engine" is like off limits...and that I should wait until the end...but maybe by looking at the Engine, I'll be guided along the path of what I need to build next...or what I need to return and what I need to build to accept whatever it is I'm returning. 
+
+Because the engine is bringing things together...it's bringing the existence of the Game into being...and it's facilitating the Gameplay. 
+
+So, the Engine is responsible for initiating everything...bringing everything together. 
+
+So, yeah, I mean, I think building the Engine at the same time is probably an idea worth exploring...
+
+So...I can initialize a `Game` object. And the `Game` object is sort of the "engine" that I've been thinking about. 
+
+Ok, so what does the `Game#play` object need to do? 
+
+Well, my brain wants it to welcome the player by presenting something that shows "HANGMAN" and the graphic. 
+
+Maybe for now, just as a place holder, I can just put: 
+
+```
+HANGMAN
+
+(p)lay
+(i)nstructions
+```
+
+And that's all I want to do now. So, I somehow want to `puts` this to the screen. 
+
+so then, how do I do this with a method? 
+
+Ok, so now I know how to get this with a method. 
+
+How do I make this appear automatically, when `Game` object is instantiated? 
+
+This can be part of the `play` method. 
+
+Ok...so I've done that now. What next? 
+
+I want to wait for input from the user. yeah? 
+
+or..no. I mean, that's not really fun...I mean, playing the game will be fun-ish...but what i'd like to do is actually change the "HANGMAN" that's listed there to be a `Solution` object. 
+
+And so, my question is...what I'd like to do is actually show something like: 
+
+```
+H _ N G M _ N
+```
+
+or can I do something where I show a letter with an underscore underneath it? 
+
+that acutally might be a little more difficult. But it's the easier option than finding like a box to display. 
+
+Um, what do I want to do? 
+
+Ok, so now...I've created a way to instantiate a game, and then when I call the `#play` method, it displays a `Solution` object. 
+
+So now what do I want to do?
+
+I should say that I'm not really using this to do any testing...but I don't necessarily know how to use testing to get up and running. So what I want to continue to do is build between the Engine, and the object methods and states. 
+
+But it's a strange balance, because I'm building the objects, their states and their behaviors, while also attempting to build the Engine as well as the tests for it all. 
+
+So I don't really know how to bring all those piece together. But I don't know that all those pieces need to come together. 
+
+what I want to focus on, is the individual thing i'm working on...
+
+Like, it's tough for me to do without visualizing. 
+
+Well, ok, so I'm looking at the `Game` class, and specifically the `Game#play` method...
+
+```ruby
+def play
+  introduction
+end
+```
+
+And i think to myself...ok, i've run the introduction method...now what? 
+
+Because that's what `#play` is doing...it's running the entire game. 
+
+So, after an introduction, the user is given the option to either enter "p" or "i", and that will provide a response, depending on how they respond. 
+
+So it's like the next thing the `Game` needs to do is expedite game play. 
+
+Or rather it needs to validate input, and disposition the next step. 
+
+So i feel like I'm setting up a loop to listen for input. 
+
+I'd rather the `Game#play` method be a series of calls to other methods.
+
+So I need to run `Game#user_choice` now.
+
+And I know that I want to call this method now..but I haven't defined it at all. 
+
+And this is where I can use testing to help me define it. 
+
+So, now, my `Game#play` method looks like this: 
+
+```ruby
+def play
+  introduction
+  user_choice
+end
+```
+
+And I need to create a `Game#user_choice` method, so the program will do something at this point. 
+
+```ruby
+def user_choice
+  # do something
+end
+```
+
+ok. Nice. So this is where I'd go to the test suite, and begin writing tests to fail. 

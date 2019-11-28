@@ -2,7 +2,7 @@
 
 require 'spec_helper.rb'
 
-module MyHangman
+module Hangman
   RSpec.describe Player do
     context '#initialize' do
       it 'creates a Player object' do

@@ -2,7 +2,7 @@
 
 require_relative 'solution.rb'
 
-module MyHangman
+module Hangman
   class Board
     attr_accessor :letters, :solution
 

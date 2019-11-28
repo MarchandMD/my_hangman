@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MyHangman
+module Hangman
   class Game
     attr_accessor :dontknow, :maybetwo, :maybenone
 

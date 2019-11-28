@@ -6,7 +6,7 @@ require 'my_hangman/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'my_hangman'
-  spec.version       = MyHangman::VERSION
+  spec.version       = Hangman::VERSION
   spec.authors       = ['Michael Marchand']
   spec.email         = ['michaeldavidmarchand@gmail.com']
 

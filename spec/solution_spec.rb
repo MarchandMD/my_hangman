@@ -2,7 +2,7 @@
 
 require 'spec_helper.rb'
 
-module MyHangman
+module Hangman
   RSpec.describe Solution do
     context '#initialize' do
       it 'creates a Solution object' do

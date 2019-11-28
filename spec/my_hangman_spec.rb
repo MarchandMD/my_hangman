@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe MyHangman do
+RSpec.describe Hangman do
   it 'has a version number' do
-    expect(MyHangman::VERSION).not_to be nil
+    expect(Hangman::VERSION).not_to be nil
   end
 
   it 'does something useful' do

@@ -716,3 +716,49 @@ end
 ```
 
 ok. Nice. So this is where I'd go to the test suite, and begin writing tests to fail. 
+
+Ok, so I'm starting to build tests for `#user_choice`...
+
+Yep. And now I've also begun using the hints from the Linter a lot more. 
+
+I mean, it's really easy to accept the suggestions I find from the linter when it's my project...
+
+So i'm at a point now, where I'm able to accept input, and I'm able to expedite the program based on the input from the user; either they select "i" and what some instructions, or the select 'p' and they start playing the game. 
+
+So, I don't really want to spend a lot of time explaining or displaying the instructions because it's not really the programming part of things.
+
+what I want to do is...focus on if they select "p"
+
+So I feel like the `Game#user_choice` method is complete at this point. It does what it needs to do...and that's get the input from the user. So then, what is it taht the `#user_choice` method should be returning? 
+
+I feel like the `Game#user_choice` method can simply return the `input`...this way the next line in the `Game#play` method is something like: 
+
+```ruby
+user_choice == "p" ? start_game: instructions
+```
+
+That way the `Game#play` method is flowing a certain way...
+
+Ok, so I'm at a place where, I can either `#start_game` or I can `#display_instructions`. 
+
+wow, this is actually progressing a little faster than I expected...
+
+Ok, so, since I want to display the available letters...I'm pretty sure I already have an object that'll display the alphabet the way i want it to be displayed....
+
+yeah, and that's the `Board` object that I'd need...
+
+so now...in my `Game` object, I need to require the `Board`...
+
+Um, ok...now that I have the `Board` object available to my `Game` object....I think I need to instantiate a `Game` object with a `Board` object. yeah?
+
+Not necessarily, though it'll probably make things easier if I do. 
+
+for now, I'm alright doing what I just did which is: 
+
+```ruby
+"available letters: #{Board.new.letters}"
+```
+
+...but now I need to figure out how to display these the way I want to display them.
+
+But first, I'm super hungry....

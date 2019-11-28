@@ -521,4 +521,20 @@ Well, this would push the flow of the `loop` statement to the `else` branch of t
 end
 ```
 
-So if the `input.length` is in fact equal to 1, break the loop
+So if the `input.length` is in fact equal to 1, break the loop. 
+
+The `end` on line 3 above is the end of the `if` statement, and the `end` on line 4 is the end of the loop. But by calling `break` inside the `else` branch of the `if` statement, Ruby immediately ends the loop, and goes to the next line in the method, since the `loop` statement is part of a method. 
+
+The next line in the method, directly after the `end` of the `loop` is
+
+```ruby
+input
+```
+
+So, why would I put this here?
+
+Why would I put the `input` variable as the last line outside of the loop and just before the `end` of the method?
+
+Also, could I re-factor the `loop` statement to use `while`?
+
+I mean, I could, but why would I right now? I'll save the re-factoring for later. If it works now, use it, and move forward. 

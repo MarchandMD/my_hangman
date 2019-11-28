@@ -10,9 +10,9 @@ module Hangman
         expect(game_solution).to be_truthy
       end
 
-      it " has a default value of 'hangman' " do
+      it " has a default value of 'HANGMAN' " do
         game_solution = Solution.new
-        expect(game_solution.value).to eq('hangman')
+        expect(game_solution.value).to eq('HANGMAN')
       end
     end
   end

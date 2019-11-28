@@ -761,4 +761,24 @@ for now, I'm alright doing what I just did which is:
 
 ...but now I need to figure out how to display these the way I want to display them.
 
-But first, I'm super hungry....
+Ok, I'm slowly doing more things. 
+
+At least I'm creating the first part of the game play. 
+
+So now, I want to remove some of the unnecessary..
+
+Now the thing to do is...obscure the secret word with spaces.
+
+And i think I already have that...
+
+I didn't have it. I was doing something else to remove a guessed letter from the displayed alphabet. 
+
+What I want to do now is....take a look at the new method I just created: 
+
+```ruby
+def hide(solution = nil)
+  puts "_" * solution.length
+end
+```
+
+And this takes the solution, and converts it to dashes...

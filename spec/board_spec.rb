@@ -16,6 +16,13 @@ module Hangman
       end
     end
 
+    context '#hide' do
+      it 'converts the solution to dashes' do
+        board = Board.new
+        expect{ board.hide('hangman') }.to output("_ _ _ _ _ _ _ \n").to_stdout
+      end
+    end
+
     context '#remove_letter' do
       it 'replaces a letter with an empty string' do
         new_board = Board.new

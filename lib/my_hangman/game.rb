@@ -5,10 +5,11 @@ require_relative 'board'
 
 module Hangman
   class Game
-    attr_accessor :solution, :maybetwo, :maybenone
+    attr_accessor :solution, :board, :maybenone
 
     def initialize
       @solution = Solution.new
+      @board = Board.new
     end
 
     def introduction
@@ -39,9 +40,10 @@ module Hangman
 
     def start_game
       # starting the game
-      puts'*' * 10
-      puts "i want to display the available_letters #{print Board.new.letters}\n\n"
-      puts "i want to display the solution: #{solution.value}"
+      puts'*' * 10 + "\n\n"
+      puts board.letters.join(' ') + "\n\n"
+      puts "secret word: #{solution.value}"
+      puts "obscured secret word: #{board.hide(solution.value)}"
       puts 'i want to prompt the user for a letter'
     end
   end

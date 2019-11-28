@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'solution.rb'
+require_relative "solution.rb"
 
 module Hangman
   class Board
@@ -11,12 +11,12 @@ module Hangman
       @solution = Solution.new
     end
 
-    def remove_letter(index = nil)
-      letters[index] = ' '
+    def hide(solution = nil)
+      "_ " * solution.length
     end
 
-    def display_solution(solution = self.solution)
-      puts solution.value
+    def remove_letter(index = nil)
+      letters[index] = " "
     end
   end
 end

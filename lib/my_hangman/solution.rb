@@ -7,7 +7,5 @@ module Hangman
     def initialize(value = 'HANGMAN')
       @value = value
     end
-
-    def hide; end
   end
 end

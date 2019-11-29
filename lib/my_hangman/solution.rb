@@ -7,5 +7,9 @@ module Hangman
     def initialize(value = 'HANGMAN')
       @value = value
     end
+
+    def add_a_letter(letter = nil)
+      puts letter
+    end
   end
 end

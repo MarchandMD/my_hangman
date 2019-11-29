@@ -2,10 +2,11 @@
 
 | to do items|
 |---|
-update hidden_solution|
+~~update hidden_solution~~|
 no more letters available|
 attempting to guess an unavailable letter|
 improve input validation on `#take_a_turn`|
+improve validation for `Game#user_choice` in the `Game#play` method|
 
 
 I'm only calling this part 2 because it's the second markdown file. That's all. 
@@ -491,3 +492,171 @@ Ok, so I feel like I've effectively reduced the `Game#take_a_turn` method down t
 Prompt for input, then validate and return the input
 
 Now that I've updated the `Game#take_a_turn` method, I feel the need to test it....
+
+Ok so what am I looking at? I'm looking at a test that, when initiated, went into an infinite loop...
+
+So why did the loop begin?
+
+Why didn't the method accept the parameter that I passed to it in hte unit test? 
+
+Ok, so I think the issue is, the order of the method. 
+
+I don't need to start the loop so soon...or I need to give the engine an opportunity to evaluate the parameter i"m passing in...
+
+Ok, and I think I need to change this...this is where I need to re-factor from a `loop` to a `while` statement. 
+
+Seriously, there is a lot of maintaining of this test suite....
+
+ok, I think I've created the test to do the thing I want it to do...and now, to look at it...
+
+I guess, what I want to do now, si see what it does live...
+
+Ok, so, I think I've successfully re-factored the `Game#take_a_turn` method down to a simpler method. 
+
+Now, what was the point for all that? 
+
+IT was to produce or return a new `Game@letter` instance variable, so I can use it to update the `Board`. 
+
+Now, how do I test this?
+
+Alright, I'm 80% confident the method is return the thing I need it to return. 
+
+So then, what's next? 
+
+It's updating the board. 
+
+could I do: `board.update`?
+
+I mean, would that be ideal? Because I want to cut down on some things...I mean, I wnat the `Game` class to be as simple as posslbe. 
+ But it's getting bigger...
+ 
+ So yeah, what would the update method do?
+ 
+ I can always build it, test first...
+ 
+ Ok...so...I've done a horrible job of keeping my current progress, or my current changes up to date here in these notes. I think it's because I feel like the small changes i make ...like...I can't notate every little thing. Because I understand stuff, and I can make leaps....
+ 
+ Ok, so what am I doing then? 
+ 
+ Now, I have the basis for doing more. 
+ 
+ I can show a basic board, I can make a guess, I can remove letters from the available lettes, I can get all the way through the entire alphabet. But then what happens?
+ 
+ I feel like, all the toher htings I hvae to do with the program are actually fairly complicated. But if I just break things down a little at a time, maybe it won't be so bad. 
+ 
+ Ok, so the next thing to focus on...is somehow populating the board....
+ 
+ Um, ok, just focus on the issue. Like, how to do the thing that I want to do...
+ 
+ So, what am I trying to do?
+ 
+ I'm trying to create an array like: 
+ 
+```ruby
+['h', ' ', 'a', ' ', (...)]
+``` 
+
+but why? Why am I trying to create this? 
+
+I already have the solution as an `Array`..and I already ahve the `solution.obscured`. Why do I need yet another array? I don't. 
+
+What I do need to do is...compare the letter guessed to the letters of the solution. 
+
+Ok, so 
+
+```ruby
+solution.include?(letter)
+```
+
+And that'll return true. 
+
+Then what? 
+
+I don't know if I need to do taht even...
+
+But what's next?
+
+If I do...
+
+I need to replace the appropriate blank space in the obscured solution 
+
+But the obscured solution...is something I want to have access to. 
+
+But in what form? 
+
+Do I want to have access to the obscured solution in the form of an array or the form of a string? 
+
+I mean, I don't understand why this is so difficult. What am I trying to do? 
+
+I have a `String`...that looks like `_ _ _ _ _ _ _ `
+
+Ok, so maybe what I want to do is....iterate over the elements of the solution, and compare each element to the `Game@letter`. 
+
+And then what? 
+
+just do something simple for now. 
+
+```ruby
+solution.each_with_index do |x, i|
+  if x == letter && i != 0
+    solution.obscured[i*2] = x
+  else
+    solution.obscured[i] = x
+  end
+end
+```
+
+I'm having a really difficult time with this...and I don't know what it is i'm trying to do....
+
+I mean, i'm trying to populate the board with a correct guess...And I think it's the data structure more than anything that's giving me a hard time. 
+
+I mean, I'm worried too much about how this will view or print to the screen, and that should be the least of my concerns, becuase that's really teh easiest part.
+
+I mean, i should be making this easier on myself...I don't know..I'm just completely stuck on this... and I don't know if I'm doing myself nay good by continuing to llinger on the issue. aT least not on my own...so..I mean, I think i'd like to try building something by testing it...but I'm not sure that'd help me. 
+
+Why not just levarage the testing to the extent of it's purpose...
+
+Now what do I want to this method to do? Very simply?
+
+I want it to look at the `solution.obscured` instance vairable....
+
+and eventually return it, correctly....
+
+Ok, so now, I know that `#reveal` will return my `@obscured` instance variable, but so what? I need to do something else to it. 
+
+So, update a single element in the instance variable....
+
+I feel like I'm looking for a method or a capability that I have to write...
+
+So I need to articulate it a little more...
+
+so, i need to talk it out, and maybe extract this into something more abstract..or something simpler...
+
+because what do I want to do?
+
+I want to compare a single letter to all elements in an array. 
+
+yeah? 
+
+And can I get true/falses for that?
+
+Ok...i think i'm on to something here. 
+
+So what I was doing was
+
+```ruby
+mine = solution.value.collect { |x| x == letter } 
+```
+
+and this returns an `Array` that has `boolean` values...
+
+Then, what I did was: 
+
+```ruby
+mine.map { |x| x == true ? letter : '_" }
+```
+
+So that's how I got multiple letters into it...
+
+But I don't know how I'd persist the correct guesses. 
+

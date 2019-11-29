@@ -16,6 +16,11 @@ module Hangman
         new_game.take_a_turn('a')
         expect(new_game.letter).to eq('a')
       end
+
+      it 'returns the @letter instance variable' do
+        new_game = Game.new
+        expect(new_game.take_a_turn('a')).to eq('a')
+      end
     end
   end
 end

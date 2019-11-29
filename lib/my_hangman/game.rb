@@ -23,7 +23,12 @@ module Hangman
     def play
       introduction
       user_choice == "p" ? display_board : display_instructions
-      take_a_turn
+      while board.letters.length.positive?
+        take_a_turn
+        board.remove_letter(board.letters.index(letter))
+        display_board
+      end
+      puts "Game Over"
     end
 
     def user_choice(input = nil)
@@ -57,7 +62,7 @@ module Hangman
         input ||= gets.chomp.upcase
         input.length != 1 ? input = nil : break
         puts "invalid entry. Try again: "
-        # board.remove_letter(board.letters.index(letter))
+
         # display_board
       end
       @turns += 1
@@ -66,5 +71,5 @@ module Hangman
   end
 end
 
-game = Hangman::Game.new
-game.play
+# game = Hangman::Game.new
+# game.play

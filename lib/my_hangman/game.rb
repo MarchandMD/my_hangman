@@ -5,16 +5,17 @@ require_relative "board"
 
 module Hangman
   class Game
-    attr_accessor :solution, :board, :turns
+    attr_accessor :solution, :board, :turns, :letter
 
     def initialize
       @solution = Solution.new
       @board = Board.new
       @turns = 0
+      @letter = ""
     end
 
     def introduction
-      puts "#{solution.value}\n\n"
+      puts "#{solution.value.join}\n\n"
       puts "(p)lay"
       puts "(i)structions"
     end
@@ -46,32 +47,24 @@ module Hangman
       puts "*" * 10 + "\n\n"
       puts board.letters.join(" ") + "\n\n"
       puts "secret word: #{solution.value}"
-      puts "obscured secret word: CURRENTLY REFACTORING THIS"
+      puts "obscured secret word: #{solution.obscured}"
       puts "You're currently on turn #{turns + 1}"
     end
 
-    def take_a_turn(letter = nil)
+    def take_a_turn(input = nil)
       print "Guess a letter: "
       loop do
-        letter ||= gets.chomp.upcase
-        if letter.length != 1
-          puts 'invalid entry. Try again: '
-          letter = nil
-        elsif board.letters.include?(letter) && solution.value.include?(letter)
-          board.remove_letter(board.letters.index(letter))
-          solution.update(letter)
-          puts display_board
-          self.turns += 1
-          break 
-        else
-          puts "that's not what I expected"
-          break
-        end
+        input ||= gets.chomp.upcase
+        input.length != 1 ? input = nil : break
+        puts "invalid entry. Try again: "
+        # board.remove_letter(board.letters.index(letter))
+        # display_board
       end
-      # display_board
+      @turns += 1
+      self.letter = input
     end
   end
 end
 
-# game = Hangman::Game.new
-# game.play
+game = Hangman::Game.new
+game.play

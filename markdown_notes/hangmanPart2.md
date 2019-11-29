@@ -1,4 +1,13 @@
 # hangman Part 2
+
+| to do items|
+|---|
+update hidden_solution|
+no more letters available|
+attempting to guess an unavailable letter|
+improve input validation on `#take_a_turn`|
+
+
 I'm only calling this part 2 because it's the second markdown file. That's all. 
 
 I left off from the previous file building the `Game#take_a_turn` method....and this is where things are really expanding...and almost expanding faster than I can keep track of. 
@@ -275,3 +284,210 @@ board.hide(solution.value).split('')
 ```
 
 so, if I move this to the `Board` class...how will this change? 
+
+Wel, to start...I won't need to call `board.hide`...
+
+And it suddenly seems silly to have a `Board#hide` method...doesn't it? No...it makes total sense. Because I want the `Board` to `#hide` the solution. 
+
+So I'll leave that as it is. 
+
+But the `@hidden_solution` now is defined in the `Board` class, and it is instantiated to a value of: 
+
+```ruby
+@hidden_solution = hide(solution)
+```
+
+and that makes sense to me. because `#hide` is a method of the `Board` class, and it'll hide the solution...ok. got that. 
+
+Next...I want to make sure this instance variable is working correctly. So I'm going to test it...
+
+ok, so now, I have to maintain my Test suite....because I made a lot of changes in the code base...
+
+Ok, so, i'm starting to appreciate the separation of dependencies in the test suite...I mean, I want to minimize the amount of "breaking" i do...
+
+Ok, so now, I have some red in my test cycle that I need to address.
+
+what am I currently testing? 
+
+I'm attempting to test the setter method for the `@hidden_solution` instance variable. And it failed. 
+
+Why did it fail? 
+
+What code did I use in my unit test? 
+
+```ruby
+new_board = Board.new
+new_board.solution = 'cow'
+```
+
+Ok, so what I'm attempting to do here is create a different solution, yeah? 
+
+So i'm doing that.
+
+But when i instantiated `new_board`...it created an instance variable of `@hidden_solution`...that is not at all connected to changes in the `@solution` instance variable....
+
+So then, does the `@hidden_solution` need to come out of the constructor method? 
+
+I mean, it definitely seems like it absolutely has to come out of that.
+
+But it is possible for me to change to setter method of `@solution` to do more than update the value....I could turn `@solution` into an `attr_reader` and then create a method called `Board#solution` that updates the `@hidden_solution`...but why? That seems silly. 
+
+Why wouldn't I simply pull the `@hidden_solution` out of the constructor? 
+
+Because it's a behavior that the `Board` will need to do. 
+
+It will also need to change the `@hidden_solution`...so it'll ahve to output something different...so maybe I don't need a `@hidden_solution` instance variable at all, but rather, a `#hide` method....
+
+so, i'm thinking about a lot...and there are a lot of things...a lot of variables that I'm considering...but what I'd liket to do is instead do something specific. That's the trouble with testing...it leaves me in the abstract..as opposed to shows me what I'm actually doing. And that's difficult to do. I need to see what is happening, what I'm asking the Engine to do...Because I don't know if I want to split the solution now, or later, how I want work with this thing....
+
+or why I'd want to do this, or do that. Like, I can't tell what I'll want to do downstream...so the only thing I can really do is build now, and try to make it work...
+
+so, why am I working on this `#hide_solution` method? I really don't know. I've completely lost the context of why I'm working on what I'm working on.
+
+So I think I want to take a step back...and get out of the testing, and go back to the actual engine...
+
+Ok, so the game still works...sort of. I mean it does a lot of what I'm hoping it'll do...but there are so many different things I could be working on. 
+
+I want to just pick one thing, and attempt to focus on it. 
+
+So, as I run my program, what's the first thing I notice? 
+
+I notice my solution is being displayed as an Array....
+
+So in the `Game#introduction` method is: 
+
+```ruby
+puts "#{solution.value}\n\n"
+```
+
+so, the `solution.value` is defaulting to an array...
+
+I'm going to leave the actual object alone, because there are things that i'll want to do to it....
+
+but it's really easy for me to manipulate the output in a `puts` call, so I'll do something here...
+
+```ruby
+puts "#{solution.value.join}\n\n"
+```
+
+Ok, solved that small issue...
+
+Now what?
+
+Now, I want to display the obscured_secret_word as a series of dashes and spaces...so how do i do that?
+
+Well, I want to do something to the solution, don't I?
+
+I want to do 
+
+```ruby
+solution.obscured
+```
+
+and that'll simply turn the entire solution into dashes.
+
+Now, I've started to think about how to handle this.
+
+I mean, I suppose what I could do is remove letters from an array that contains the secret_word, and when the length of that array is 0 then the game is over...but I'm focusing on something different than what I want to be right now. But that's what my brain is doing...it's chasing possible alternative solutions while I'm working on something else. 
+
+What I want to do is continue to narrow my scope.
+
+So yes, work on `solution.obscured`...
+
+And this is a new method. So i'll write a test for it...
+
+Ok, so i'm guessing a lot with my testing. 
+
+I want to be more pointed. what am I attempting to do? 
+
+I want to turn my current `@value` 
+
+```ruby
+['C', 'O', 'W']
+```
+
+into
+
+```ruby
+_ _ _
+```
+
+And yes, I was overthinking it. 
+
+But I want to add some additional tests, to make sure it's doing what I think I want it to do. 
+
+So the method I ended up writing was: 
+
+```ruby
+def obscured
+  '_ ' * value.length
+end
+```
+
+and this worked. 
+
+Now I want to give it a couple more tests, to be sure. 
+
+Ok, yeah, I'm confident it's obscuring the thing. 
+
+so now, can I incorporate this into my `Game#play` method? 
+
+Yes. I did. 
+
+Ok. now what? 
+
+Well, I was ableto update the available letters. but now what? 
+
+I mean, something else I could do...
+
+Do I need to add like a to do list? 
+
+I mean, a manifest of the things I could be working on? 
+
+Because there are so many different things that I'd like to do, and they all seems so fun to focus on. But I'm sort of pulling myself in different directions. 
+
+Ok, so now the `Game#take_a_turn` method has too many lines.
+
+so, how would I reduce the method? 
+
+I mean, some method is going to have to be large, isn't it? 
+
+Or do I reduce the method, and write the script to be larger? 
+
+so the script is method calls, and control flow...
+
+Because if I reduce the `Game#take_a_turn` method to return a value, then I could build another method...
+
+Well, If I were going to reduce this `#take_a_turn` method, what would I do?
+
+I'd reduce it to return a letter...a validated and proper letter, to pass to the next method...
+
+Ok, so the idea is I might be able to reduce the complexity of hte method `#take_a_turn` if I were to actually think about it, instead of just continue to keep adding code to it. 
+
+So I really should articulate: what dO I want this method to do?
+
+Like, what do I want it to accept, adn what do I want it to return?
+
+I mean, I think that's something I haven't thought about yet. 
+
+Because really, I'm having the method do a lot more than just "take_a_turn"...I mean, I'm starting to throw all kinds of other functionality in there. And really, I should probably be breaking these things out into smaller sections...
+
+so maybe the `Game#take_a_turn` method should prompt the user for a letter, and then return a letter...
+
+I mean, that seems to be singular in nature. 
+
+And this way I can remove the call to `board.remove_letter` and place that somewhere else.
+
+But before I remove it, where am I moving it to?
+
+Ok, well, the obvious thing would be to move it to the `Game#play` method.
+
+but...the `board.remove_letter` needs some input. 
+
+And this brings me back to the idea that the `Game` object needs another instance variable. And that would be the `@current_guess` or maybe the `@current_letter` or `@letter`.
+
+Ok, so I feel like I've effectively reduced the `Game#take_a_turn` method down to a simpler purpose: 
+
+Prompt for input, then validate and return the input
+
+Now that I've updated the `Game#take_a_turn` method, I feel the need to test it....

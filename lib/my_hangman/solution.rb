@@ -11,5 +11,9 @@ module Hangman
     def update(letter = nil)
       letter
     end
+
+    def obscured
+      '_ ' * value.length
+    end
   end
 end

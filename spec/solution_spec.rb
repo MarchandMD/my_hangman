@@ -20,5 +20,12 @@ module Hangman
         expect(game_solution.value.join('')).to eq('DOUGHNUTS')
       end
     end
+
+    context '#obscured' do
+      it 'turns the solution into dashes and spaces' do
+        test_solution = Solution.new('cow')
+        expect(test_solution.obscured).to eq('_ _ _ ')
+      end
+    end
   end
 end

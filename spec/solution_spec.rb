@@ -12,7 +12,12 @@ module Hangman
 
       it " has a default value of 'HANGMAN' " do
         game_solution = Solution.new
-        expect(game_solution.value).to eq('HANGMAN')
+        expect(game_solution.value.join('')).to eq('HANGMAN')
+      end
+
+      it "can accept a different value besides the default" do
+        game_solution = Solution.new("doughnuts")
+        expect(game_solution.value.join('')).to eq('DOUGHNUTS')
       end
     end
   end

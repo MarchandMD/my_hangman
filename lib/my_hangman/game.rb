@@ -5,13 +5,12 @@ require_relative "board"
 
 module Hangman
   class Game
-    attr_accessor :solution, :board, :turns, :hidden_solution
+    attr_accessor :solution, :board, :turns
 
     def initialize
       @solution = Solution.new
       @board = Board.new
       @turns = 0
-      @hidden_solution = board.hide(solution.value).split('')
     end
 
     def introduction
@@ -47,7 +46,7 @@ module Hangman
       puts "*" * 10 + "\n\n"
       puts board.letters.join(" ") + "\n\n"
       puts "secret word: #{solution.value}"
-      puts "obscured secret word: #{hidden_solution.join}"
+      puts "obscured secret word: CURRENTLY REFACTORING THIS"
       puts "You're currently on turn #{turns + 1}"
     end
 
@@ -59,23 +58,11 @@ module Hangman
           puts 'invalid entry. Try again: '
           letter = nil
         elsif board.letters.include?(letter) && solution.value.include?(letter)
-          puts "that letter is available and that letter is in the solution"
           board.remove_letter(board.letters.index(letter))
+          solution.update(letter)
           puts display_board
           self.turns += 1
-          hidden_solution.each_with_index { |x,y|  }
-          break
-        elsif board.letters.include?(letter) && !solution.value.include?(letter)
-          puts "that letter is available..."
-          puts "but not in the solution..."
-          puts "removing a letter from available letters"
-          self.turns += 1
-          break
-        elsif !board.letters.include?(letter)
-          puts "that letter has already been guessed"
-          puts "you lose a turn"
-          puts "try again"
-          break
+          break 
         else
           puts "that's not what I expected"
           break
@@ -86,5 +73,5 @@ module Hangman
   end
 end
 
-game = Hangman::Game.new
-game.play
+# game = Hangman::Game.new
+# game.play

@@ -782,3 +782,87 @@ end
 ```
 
 And this takes the solution, and converts it to dashes...
+
+Ok, so I'm having a little dificulty displaying it, for some reason...
+
+And since I'm having some trouble with it...why not go to the test suite?!
+
+first thing I need to do is clean up `solution_spec.rb`
+
+
+Ok, I think I know why this is weird. 
+
+It's because I want to do something to the `Solution` instance...like..
+
+```ruby
+convert_solution(solution_instance)
+```
+
+But, can't I do something like: 
+
+```ruby
+solution = Solution.new
+solution.hide
+```
+
+Maybe I'm unnecessarily complicating it...
+
+because don't I just want to do something like, just...
+
+```ruby
+puts "_" * solution.length
+```
+
+Ok...so the way this would work would be if I were passing the `Solution` object as a parameter to a method. 
+
+So I think I want to put this method into a different class. 
+
+So which class?
+
+I feel like this would be something for the `Board` to do.
+
+Ok, nice! I move the method to the `Board` class, and I got the method to pass the tests that I wrote. 
+
+So now, I'm going to try to incorporate this method into my `Game` class...
+
+Ok..so now...I see something...
+
+Since I am playing one game...I only want one instance of a `Board`. 
+
+So, I think it's smart of me to instantiate a `Game` with a `Board` object. 
+
+Ya know...I feel like this is a little easier than it should be. 
+
+But I think that just reveals more about me, and my own expectations as opposed to my actual ability....
+
+So then, this makes me want to keep going....
+
+So then, what's the next thing I want to be able to do with my game? 
+
+Ok, so now, I can prompt the user for a letter, and it's the same as asking for a (p) or an (i)....
+
+I mean, now that I'm done with `#start_the_game`...I can go back to `Game#play` right? 
+
+yeah, I can... At this point, I could really start a loop...that drives towards a winner. 
+
+but this begs the question: what makes someone a winner? 
+
+Someone wins if they enter a guess of the solution word and it's an exact match. 
+
+so then I need to be able to offer someone a chance to solve the puzzle. 
+
+I could also limit the number of guesses. 
+
+Oh wow. The game is really opening up to me. 
+
+But I want to make sure I keep things narrow. 
+
+And I want to make sure my naming is helpful. 
+
+so now, what I want to do is maybe change the name of this `Game#start_game` to maybe....be something else. 
+
+I don't know.. I mean, if I start changing the names of things, will that make it more confusing for me? 
+
+Ok, so I feel like i'm doing a lot. I'm adding a lot of functinoality, and I need to slow it down. 
+
+I'm also getting close to 6000 words, so I'm going to create a new file. 

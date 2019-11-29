@@ -19,7 +19,7 @@ module Hangman
     context '#hide' do
       it 'converts the solution to dashes' do
         board = Board.new
-        expect{ board.hide('hangman') }.to output("_ _ _ _ _ _ _ \n").to_stdout
+        expect(board.hide('hangman')).to eq("_ _ _ _ _ _ _ ")
       end
     end
 

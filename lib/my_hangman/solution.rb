@@ -4,12 +4,12 @@ module Hangman
   class Solution
     attr_accessor :value
 
-    def initialize(value = 'HANGMAN')
-      @value = value
+    def initialize(value = 'hangman')
+      @value = value.upcase.split('')
     end
 
-    def add_a_letter(letter = nil)
-      puts letter
+    def update(letter = nil)
+      letter
     end
   end
 end

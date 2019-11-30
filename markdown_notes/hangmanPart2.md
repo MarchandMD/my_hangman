@@ -829,3 +829,77 @@ Like, it's all about finding bugs...and being able to articulate those things.
 
 
 I feel like can do more things...like taking the training wheels off...
+
+but maybe this is the point where I start using branches. 
+
+I mean, if I'm goign to be re-factoring. and then I can merge the branch in after i'm happy with the changes I've made. 
+
+it's just...it's a feel. it's a sense. 
+
+ok, i've created a git branch now: 
+
+```
+git checkout -b refactor1
+```
+
+this creates, and switches to the branch, right away
+
+Now, I can make any changes I want to this. Then, when I get to a point wher I'm stumped, I can merge it into the master, and keep working on the re-factor.
+
+So, the re-factor..what's the goal with the re-factor branch? 
+
+The goal is to clean up the game, little by little. 
+
+Ok, so I merged the `refactor1` branch into the `master` branch. 
+
+It's probably a good idea to start working more via branches. 
+
+So what's the next thing I want to work on?
+
+I think what I'd like to do is be able to create different words as a solution. 
+
+So how would I do that? 
+
+Well, the first thing I want to do is see how the word is currently being set. ok, so the solution is being created when the board is being initialized. 
+
+So this is a behavior of the `Solution` object. 
+
+But is it really? 
+
+I mean, i think this is something that can go to the `Game` class...becaus really I feel like the selection of a secret word is sort of...a behavior of the game. 
+
+so then what I'd do is I'd pull the `instance` variable out of the `Game` object instnatiation...
+
+Ok, so here's my concern...if I am making a `Solution` object when I instantiate a `Game`...what will happen to the `Solution@obscured` value when I re-assign a value to the `Solution` object?
+
+Because if I set the `Solution.value` to something else, that doesn't necessarily mean the `Solution.obscured` will be changed...does it? 
+
+Wow, this is a really good question....
+
+How do I test this?
+
+maybe in the `Game` instance....
+
+yep. Ok, so exactly what I was expeting. 
+
+Ok, so here's where I'm at...I have a getter and setter method for the `solution.value`...but I actually think I want the setter version of the `#value` method to do something other than just take what ever I give it. 
+
+So this would mean that I'm changing the `attr_accessor` method to `attr_reader`...at least for `:value`. 
+
+and then I need to add: 
+
+```ruby
+def value= (word = '')
+  word.split('')
+end
+```
+
+actually, i'd want to pass an empty string, and not `nil`. 
+
+And I'm doing this so......for no reason. I actually don't need to do this. I'm doing this to avoid doing what I know needs to be done...or what I think needs to be done. and that includes removing the ...
+
+..no i don't want to remove th instance variable. but what I do want to do is, re-define th assigment by default. By default if it were an empty string, I could instantiate a `Solution` object later, and that way I'd still ahve the behavior/states of the `Solution` object, but it'd be matched to the random word. 
+
+so next i'll: 
+
+### change the default assignment to `Game#solution` to an empty string, and look for a new place to instantiate a `Solution` with a (psuedo)random value...

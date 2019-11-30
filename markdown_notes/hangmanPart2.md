@@ -660,3 +660,14 @@ So that's how I got multiple letters into it...
 
 But I don't know how I'd persist the correct guesses. 
 
+So, Um, this seems to be where I'm currently stuck. 
+
+So how can I fix this? I mean, is this the only thing I can work on?
+
+So, what I sort of what to do is just play around with a solution and an obscured version of it...
+
+huh..ok, so I'm constantly trying things, re-doing things, and making major changes.
+
+I think what I need to do is begin to employ git branches, because I'm trying things, and making massive changes to me code...instead of allowing myself to keep my changes...
+
+So yeah, start using branches....

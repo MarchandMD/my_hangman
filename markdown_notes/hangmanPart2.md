@@ -8,6 +8,7 @@ attempting to guess an unavailable letter|
 improve input validation on `#take_a_turn`|
 improve validation for `Game#user_choice` in the `Game#play` method|
 build out the `Game#instructions`|
+~~display the name of the game by default~~|
 
 
 I'm only calling this part 2 because it's the second markdown file. That's all. 
@@ -768,4 +769,63 @@ Ya know, I just figured out that I could probably avoid this constant notating a
 
 Ok, so I added the `run_this_file.rb`...so now that saves me the commenting and uncommenting headache.
 
-Honestly, I don't think I'm using the `Letter	 class anywhere. 
+Honestly, I don't think I'm using the `Letter` class anywhere. 
+
+Man, I'm actually really glad I decided to do this now. There was actually a lot of "bloat" in the project. 
+
+I got rid of two unnecessary classes, and their associated spec files. 
+
+Then I ran Rspec and found that I had to update the manifest file as well... Rspec, ti seems, is picky. 
+
+Now I can start writing tests for the rest of the program...
+
+I'll start with the `Board` class. 
+
+I know that I definitely do instantiate a `Board` object when I'm running the `Game` class, so I do need to test this. 
+
+And this is my existing `Board` class constructor: 
+
+```ruby
+def initialize(letters = %w[A B C D E F G H I J K L M N O P Q R S T U V W X Y Z])
+  @letters = letters
+  @solution = Solution.new
+end
+```
+
+Now, I do instantiate the `Board` object with an Array optional. This means that I could instantiate it with a different type of object. 
+
+it seems like a lot to have as the default value of the optional parameter. What if I moved it to the actual assigment...and out of the parameter?
+
+And while I'm at it, I realize that I don't need to use the `@solution` instance in the constructor method. 
+
+ok, so I learned a faster way to put the alphabet into an array. 
+
+```ruby
+[*('A'..'Z')]
+```
+So this is using the `splat operator`. Adn it's also using a range. 
+
+So, i'm fairly confident that the `splat` operator will extrapolate, or expand something that is collapsed. 
+
+So, a `splat` operator converts an `Array` to a list of items. As [this guy](https://www.rubyguides.com/2018/07/ruby-operators/#Ruby_Splat_Operator_Examples) says, it's like: 
+
+> ...taking away the array, and replacing it with everything inside it.
+
+But i feel like that definition is half-assed...ok, I don't really need to dig into this....
+
+it's wild...this comfort level, this hubris...seems to continue to wrap itself in sneakier and sneakier ways...
+
+I want to focus on writing tests for my existing classes.
+Hmm, ok, so this is a little awkward...trying to write a better test. I think that I've acquired a simple understnading of the testing language. Though to write better tests requries more effort. More understanding. Going into greater depth with RSpec. Adn right now, I simply want to re-factor my code and write a few simple tests....
+
+
+Yeah, I don't really want this to de-volve into a fight with RSpec. 
+
+But what I'm experiencing is...writing these tests for my own program, I find that I am complicating the testing...or I'm wanting to be more specifci with my tests. 
+
+Ok, so now the things I'm coming across are sort of...far out there...like, issues that sort of come up. 
+
+Like, it's all about finding bugs...and being able to articulate those things. 
+
+
+I feel like can do more things...like taking the training wheels off...

@@ -8,7 +8,5 @@ module Hangman
 end
 
 require_relative './my_hangman/board.rb'
-require_relative './my_hangman/letter.rb'
-require_relative './my_hangman/player.rb'
 require_relative './my_hangman/solution.rb'
 require_relative './my_hangman/game.rb'

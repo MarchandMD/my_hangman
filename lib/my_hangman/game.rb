@@ -15,7 +15,7 @@ module Hangman
     end
 
     def introduction
-      puts "#{solution.value.join}\n\n"
+      puts "H A N G M A N\n\n"
       puts "(p)lay"
       puts "(i)structions"
     end
@@ -35,7 +35,7 @@ module Hangman
           break
         end
       end
-      puts "#{solution.value.join}"
+      puts solution.value.join.to_s
     end
 
     def user_choice(input = nil)

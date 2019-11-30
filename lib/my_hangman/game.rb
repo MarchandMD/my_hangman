@@ -24,7 +24,7 @@ module Hangman
       introduction
       user_choice == "p" ? display_board : display_instructions
       while board.letters.length.positive?
-        guess_the_answer
+        # guess_the_answer
         take_a_turn
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
@@ -102,5 +102,5 @@ module Hangman
   end
 end
 
-game = Hangman::Game.new
-game.play
+# game = Hangman::Game.new
+# game.play

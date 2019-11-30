@@ -750,3 +750,22 @@ And that's sort of a different thing.
 
 I mean, it's kind of it's own thing. Like, I could ask at the beginning of every turn, would you like to attempt to solve the secret word?
 
+Um...I suppose. Though that sort of game play gets a little tedious..having to answer y or n before very turn. 
+
+alright so there's a lot of things that are still left to do. But there's a lot of functionality that's already been achieved. 
+
+And I haven't necessarily used RSpec a tremendous amount. 
+
+Is now a good time to build tests for the different methods I have?
+
+I wonder what sort of an experience that would be like? 
+
+Trying to build tests for my own program...
+
+I mean, since that's kind of where I'm at, why don't I give it like 25 minutes, or until the end of this album. SEe what I can accomplish. 
+
+Ya know, I just figured out that I could probably avoid this constant notating and un-commenting of the last two lines in the `Game` class file, if I just created a different file, required the `Game` and then instantiated the code there. 
+
+Ok, so I added the `run_this_file.rb`...so now that saves me the commenting and uncommenting headache.
+
+Honestly, I don't think I'm using the `Letter	 class anywhere. 

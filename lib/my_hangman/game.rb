@@ -24,6 +24,7 @@ module Hangman
       introduction
       user_choice == "p" ? display_board : display_instructions
       while board.letters.length.positive?
+        guess_the_answer
         take_a_turn
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
@@ -78,6 +79,26 @@ module Hangman
         x == letter ? arr_2[i] = x : nil
       end
     end
+
+    # def guess_the_answer(input = nil)
+    #   guess = ''
+    #   puts "Would you like to guess the secret word? type (y)es or (n)o..."
+    #   loop do
+    #     input ||= gets.chomp.downcase
+    #     if input == 'n'
+    #       break
+    #     elsif input == 'y'
+    #       puts 'Enter your guess: '
+    #       guess = gets.chomp.downcase
+    #       if guess == solution.value.join('').downcase
+    #         puts "correct"
+    #       else
+    #         puts "nope"
+    #         break
+    #       end
+    #     end
+    #   end
+    # end
 
   end
 end

@@ -7,6 +7,7 @@ no more letters available|
 attempting to guess an unavailable letter|
 improve input validation on `#take_a_turn`|
 improve validation for `Game#user_choice` in the `Game#play` method|
+build out the `Game#instructions`|
 
 
 I'm only calling this part 2 because it's the second markdown file. That's all. 
@@ -713,3 +714,39 @@ So that's awesome.
 Now, there's a lot of other things I need to be able to do. 
 
 I guess the first thing I want to do is...do I want to move that code into it's own method? 
+
+Ok, did it. That was fairly easy. 
+
+So now what? 
+
+Now, I need to look at the `solution.obscured` and i need to know if `any? == "_"`
+
+Ok, I've got the end of game behavior solved. Sort of. 
+
+Now there are a lot of other things that I sort of need to look at. 
+
+Like, one off things. I mean, the game can either end by winning, or the player runs out of letters; I mean, that's really how the game should be played. 
+
+I mean, why would I want to limit the number of turns they have? 
+
+Well, that's the nature of HANGMAN...is that they have until there is a 'hangman' drawn. 
+
+So, what do I need to do next? 
+
+Because I sort of have the logic more or less done, right? 
+
+I mean, not really. I still want to work on the logic. 
+
+###No more letters available...
+Do I need to develop this? I mean, if the user takes too many guesses, they'll lose, right? And there will be less than (<) 26 parts on the hangman. 
+
+So then I guess i don't really need to build out the functionality to handle a situation where there are no more letters, right? 
+
+So, i guess what I would like to do is figure out some way to allow the user to guess the solution. 
+
+And that's got to be in the game play `while` loop, yeah? 
+
+And that's sort of a different thing. 
+
+I mean, it's kind of it's own thing. Like, I could ask at the beginning of every turn, would you like to attempt to solve the secret word?
+

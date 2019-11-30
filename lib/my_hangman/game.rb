@@ -15,27 +15,26 @@ module Hangman
     end
 
     def introduction
-      puts "H A N G M A N\n\n"
+      puts "\nH A N G M A N\n\n"
       puts "(p)lay"
-      puts "(i)structions"
+      puts "(i)structions\n\n"
     end
 
     def play
       introduction
       user_choice == "p" ? display_board : display_instructions
       while board.letters.length.positive?
-        # guess_the_answer
         take_a_turn
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?('_')
           display_board
         else
+          puts "obscured secret word: #{solution.obscured.join(' ')}"
           puts "YOU WIN!"
           break
         end
       end
-      puts solution.value.join.to_s
     end
 
     def user_choice(input = nil)
@@ -54,11 +53,9 @@ module Hangman
     end
 
     def display_board
-      # starting the game
-      # obscured_secret_word = board.hide(solution.value)
-      puts "*" * 10 + "\n\n"
+      puts "*" * 10 + "\n"
+      puts 'Remaining Letters: '
       puts board.letters.join(" ") + "\n\n"
-      puts "secret word: #{solution.value}"
       puts "obscured secret word: #{solution.obscured.join(' ')}"
       puts "You're currently on turn #{turns + 1}"
     end
@@ -74,33 +71,12 @@ module Hangman
       self.letter = input
     end
 
-    def update_solution(arr_1, arr_2, letter = nil)
-      arr_1.each_with_index do |x, i|
-        x == letter ? arr_2[i] = x : nil
+    def update_solution(arr1, arr2, letter = nil)
+      arr1.each_with_index do |x, i|
+        x == letter ? arr2[i] = x : nil
       end
     end
-
-    # def guess_the_answer(input = nil)
-    #   guess = ''
-    #   puts "Would you like to guess the secret word? type (y)es or (n)o..."
-    #   loop do
-    #     input ||= gets.chomp.downcase
-    #     if input == 'n'
-    #       break
-    #     elsif input == 'y'
-    #       puts 'Enter your guess: '
-    #       guess = gets.chomp.downcase
-    #       if guess == solution.value.join('').downcase
-    #         puts "correct"
-    #       else
-    #         puts "nope"
-    #         break
-    #       end
-    #     end
-    #   end
-    # end
   end
 end
 
-# game = Hangman::Game.new
-# game.play
+

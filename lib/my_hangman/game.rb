@@ -26,10 +26,11 @@ module Hangman
       while board.letters.length.positive?
         take_a_turn
         board.remove_letter(board.letters.index(letter))
-        solution.value.each_with_index do |x, i|
-          if x == letter
-            solution.obscured[i] = x
-          end
+        update_solution(solution.value, solution.obscured, letter)
+        if solution.obscured.any?('_')
+          puts "not yet"
+        else
+          puts "now"
         end
         display_board
       end
@@ -71,6 +72,13 @@ module Hangman
       @turns += 1
       self.letter = input
     end
+
+    def update_solution(arr_1, arr_2, letter = nil)
+      arr_1.each_with_index do |x, i|
+        x == letter ? arr_2[i] = x : nil
+      end
+    end
+
   end
 end
 

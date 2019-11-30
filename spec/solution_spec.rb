@@ -20,6 +20,5 @@ module Hangman
         expect(game_solution.value.join('')).to eq('DOUGHNUTS')
       end
     end
-
   end
 end

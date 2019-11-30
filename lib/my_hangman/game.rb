@@ -99,7 +99,6 @@ module Hangman
     #     end
     #   end
     # end
-
   end
 end
 

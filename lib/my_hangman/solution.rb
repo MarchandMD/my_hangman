@@ -8,6 +8,5 @@ module Hangman
       @value = value.upcase.split('')
       @obscured = @value.map { |x| x ? '_' : nil }
     end
-
   end
 end

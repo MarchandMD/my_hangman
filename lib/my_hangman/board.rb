@@ -14,6 +14,5 @@ module Hangman
     def remove_letter(index = nil)
       letters[index] = " "
     end
-    
   end
 end

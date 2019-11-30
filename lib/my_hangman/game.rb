@@ -28,13 +28,13 @@ module Hangman
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?('_')
-          puts "not yet"
+          display_board
         else
-          puts "now"
+          puts "YOU WIN!"
+          break
         end
-        display_board
       end
-      puts "Game Over"
+      puts "#{solution.value.join}"
     end
 
     def user_choice(input = nil)

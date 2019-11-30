@@ -671,3 +671,45 @@ huh..ok, so I'm constantly trying things, re-doing things, and making major chan
 I think what I need to do is begin to employ git branches, because I'm trying things, and making massive changes to me code...instead of allowing myself to keep my changes...
 
 So yeah, start using branches....
+
+## issue solved: How to update the obscured solution with correct guesses
+The issue I was having was this: 
+
+If the secret word stored in `solution.value` has the same letter more than once, how do I make all the letters appear after that letter is guessed by the user? 
+
+Well, I think thankfully I've been building my program by adding to the `Game#play` method...and that's been a series of methods called that do one very specific thing. 
+
+And the issue i was having, was an issue of now knowing how to update the Board with the obscured word. 
+
+But thankfully, I was at a point in the `Game#play` method that had all the objects available to me...I simply needed to figure out what the logic was. 
+
+And this is what I came up with: 
+
+
+```ruby
+def play
+  # additional code above this 
+  solution.value.each_with_index do |x, i|
+    if x == letter
+      solution.obscured[i] = x
+    end
+  end
+  #additional code after
+end
+```
+
+This works because the `solution.value` is an `Array`...and the `solution.obscured` is also an `Array`...and I believe that both of these are also `@instance variables`. 
+
+Yep. 
+
+so i'm able to use `#each_with_index` on `solution.value`. 
+
+then, I pass the block that says if the element of `solution.value` that I'm currently looking at is equal to the `game.letter` instance variable, then I should update the value of the `solution.obscured` at the location of `[i]` to be the value of the letter. 
+
+And then it works. 
+
+So that's awesome. 
+
+Now, there's a lot of other things I need to be able to do. 
+
+I guess the first thing I want to do is...do I want to move that code into it's own method? 

@@ -26,6 +26,11 @@ module Hangman
       while board.letters.length.positive?
         take_a_turn
         board.remove_letter(board.letters.index(letter))
+        solution.value.each_with_index do |x, i|
+          if x == letter
+            solution.obscured[i] = x
+          end
+        end
         display_board
       end
       puts "Game Over"
@@ -52,7 +57,7 @@ module Hangman
       puts "*" * 10 + "\n\n"
       puts board.letters.join(" ") + "\n\n"
       puts "secret word: #{solution.value}"
-      puts "obscured secret word: #{solution.obscured}"
+      puts "obscured secret word: #{solution.obscured.join(' ')}"
       puts "You're currently on turn #{turns + 1}"
     end
 
@@ -62,8 +67,6 @@ module Hangman
         input ||= gets.chomp.upcase
         input.length != 1 ? input = nil : break
         puts "invalid entry. Try again: "
-
-        # display_board
       end
       @turns += 1
       self.letter = input
@@ -71,5 +74,5 @@ module Hangman
   end
 end
 
-# game = Hangman::Game.new
-# game.play
+game = Hangman::Game.new
+game.play

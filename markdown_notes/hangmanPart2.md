@@ -3,12 +3,14 @@
 | to do items|
 |---|
 ~~update hidden_solution~~|
-no more letters available|
-attempting to guess an unavailable letter|
-improve input validation on `#take_a_turn`|
+~~no more letters available~~ (will never give the person 26 guesses)|
+~~attempting to guess an unavailable letter~~(validation completed)|
+~~improve input validation on `#take_a_turn`~~|
 improve validation for `Game#user_choice` in the `Game#play` method|
 build out the `Game#instructions`|
 ~~display the name of the game by default~~|
+~~randomize the secret word, from an Array~~|
+add the actual, visual, hangman|
 
 
 I'm only calling this part 2 because it's the second markdown file. That's all. 
@@ -903,3 +905,45 @@ And I'm doing this so......for no reason. I actually don't need to do this. I'm 
 so next i'll: 
 
 ### change the default assignment to `Game#solution` to an empty string, and look for a new place to instantiate a `Solution` with a (psuedo)random value...
+
+Honestly, as i look at my to-do list at the top of the page...I realize I'm repeating myself. I keep saying "input validation"...
+
+But that's not what I want to do right now. So I guess that's the stuff I put off. For now. 
+
+I am going to attempt to move the `Game#solution` thing. 
+
+Nice! I got that working. 
+
+So I think it's setup for scaling up at a later date. I want to actually work on some of that validation now....
+
+so, where do I need to add validation? 
+
+I think in `#take_a_turn`...
+
+Um...wow...that was remarkably easy to do.
+
+All I had to do was add an extra conditional statement in the `#take_a_turn` method. 
+
+Specifically, I did this: 
+
+```ruby
+#what it was
+input.length != 1 ? input = nil : break
+
+#to what it is
+input.length != 1 || !board.letters.include?(input) ? input = nil : break
+```
+
+So, if that was as easy as it was...what else can I do now?
+
+Ok, so after the introduction, the user is adding some input. 
+
+The way I current have it...is 
+
+```ruby
+user_choice == "p" ? display_board : display_instructions
+```
+
+and this assumes that anything besides 'p' won't start the game. And that's a little foolish...	
+
+well, actually...it's failry responsive. I already have some validdation built in...but where? probably user_choice...

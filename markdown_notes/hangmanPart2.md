@@ -947,3 +947,35 @@ user_choice == "p" ? display_board : display_instructions
 and this assumes that anything besides 'p' won't start the game. And that's a little foolish...	
 
 well, actually...it's failry responsive. I already have some validdation built in...but where? probably user_choice...
+
+Ach..I did this all on the 'master' branch..when I'm really trying to get in the habit of building on the 	'dev' branch, adn then merging as I go. 
+
+I don't want to do any actual building on the 'master' branch. I want to do all my building somehwere else, and only do merge requests into my 'master' branch. 
+
+But that is a behavior i just started yesterday afternoon. And I was excited about adding this little feature...
+
+Ok, so Im thinking about the addition of a board..like an actual hangman...and I'm wondering about how to populate the gallows with the progressive hangman. Like, first bad guess draws a body part on the board. 
+
+and I guess I don't really know how to make thathappen. but I guess that's because I'm being stubborn, and not actually attempting to do tings. I mean, i already have an indication of what turn I'm on....
+
+But what is it that I want to do? 
+
+I want to get a result when the user makes a guess, and the solution does not contain the letter they guessed. 
+
+So for now, just add some text to the script that appears ONLY when the user makes a guess from the alphabet that is NOT in the solution...
+
+Ok, so the first thing I think i'd like to add is: 
+
+```
+YOU GUESSED: "B"
+```
+Ok. so I've got that now.
+
+Ok. So what else?
+
+Well, now I want to make some prompt appear: "Nope"...Ok, I got this to work...
+
+But now I think I want to add some more validation...some more robust validation...
+
+When the user enter a guess, I want to allow the user to type the exact word/solution...and if it's correct, then let them know they won.
+

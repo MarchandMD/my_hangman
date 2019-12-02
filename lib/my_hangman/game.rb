@@ -29,6 +29,8 @@ module Hangman
       while board.letters.length.positive?
         take_a_turn
         board.remove_letter(board.letters.index(letter))
+        # if the letter is in the solution, #update_solution
+        # if the letter is NOT in the solution, #update_gallows
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?("_")
           display_board
@@ -57,6 +59,8 @@ module Hangman
 
     def display_board
       puts "*" * 10 + "\n"
+      puts letter != '' ? "You guessed: '#{letter}'" : nil
+      puts letter != '' ? update_gallows(letter) : nil
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
       gallows
@@ -70,6 +74,7 @@ module Hangman
         input ||= gets.chomp.upcase
         input.length != 1 || !board.letters.include?(input) ? input = nil : break
         puts "invalid entry. Try again: "
+        # input == solution.value.join('') ? that's it! : update_gallows
       end
       @turns += 1
       self.letter = input
@@ -93,6 +98,10 @@ module Hangman
       puts " |       "
       puts " |       "
       puts " ------- "
+    end
+
+    def update_gallows(letter = nil)
+      return "'#{letter}' is not in the solution" unless solution.value.include?(letter)
     end
   end
 end

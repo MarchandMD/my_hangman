@@ -979,3 +979,37 @@ But now I think I want to add some more validation...some more robust validation
 
 When the user enter a guess, I want to allow the user to type the exact word/solution...and if it's correct, then let them know they won.
 
+I don't know. The more I think about this, the better I feel like it would be to just leave it. Llike, it's kind of satisfying to guess a letter and know it's going to be the correct letter. 
+
+So, then the next part that I'd like to add, is the addition of the body onto the gallows. 
+
+But how am i going to do that? How am I going to increment that? 
+
+So, this requires a little more thought; LIke, how would I add the parts of the hangman incrementally? 
+
+How would I add the hangman? It's not really making sense to me. But this is the thing to do. 
+
+Well, if I keep track of the wrong guesses, I could say....
+
+if wrong answers are 1, then I should show element (wrong answers - 1) on the board.
+
+Then, if wrong answers are 2, I should show elements 0 and 1.
+If wrong answers are 3, then I should show 0,1 and 2.
+
+but then...how would I display the thing? 
+
+I mean, the board itself is just a bunch of strings on the board. 
+
+If I was to do string interpolation.......
+
+But first, I want to put the hangman into an array....
+
+I mean, what will I do then? I don't know..but I don't want to let this stop me from building the thing that I wnat to build. 
+
+Maybe one thing I could do...is construct the gallows by string interpolation. And the way i would do this would be to put the entire gallows into an Array, and then to construct an empty gallows and display that. 
+
+And then, as an incorrect letter is guessed, i could update the element of the array to be equal to a parallel array, that contains the actual hangman.
+
+that might work. I mean, I have a vague idea about it. 
+
+And I got the first part of the solution to work. I think I need to talk it out a little bit more. Because I generally understand what I want to do...and to have a specific idea that i can execute requires a greater understanding 

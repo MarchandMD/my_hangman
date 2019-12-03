@@ -58,9 +58,9 @@ module Hangman
     end
 
     def display_board
-      puts "*" * 10 + "\n"
-      puts letter != '' ? "You guessed: '#{letter}'" : nil
-      puts letter != '' ? update_gallows(letter) : nil
+      puts "*" * 40 + "\n"
+      puts letter != "" ? "You guessed: '#{letter}'" : nil
+      puts letter != "" ? update_gallows(letter) : nil
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
       gallows
@@ -87,15 +87,16 @@ module Hangman
     end
 
     def gallows
-      puts " _______ "
-      puts " |     | "
-      puts " |       "
-      puts " |       "
-      puts " |       "
-      puts " |       "
-      puts " |       "
-      puts " |       "
-      puts " |       "
+      hangman = [" |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
+      puts " ______  "
+      puts " |    |  "
+      puts "#{hangman[0]}"
+      puts "#{hangman[1]}"
+      puts "#{hangman[2]}"
+      puts "#{hangman[3]}"
+      puts "#{hangman[4]}"
+      puts "#{hangman[5]}"
+      puts "#{hangman[6]}"
       puts " |       "
       puts " ------- "
     end

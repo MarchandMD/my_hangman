@@ -7,6 +7,7 @@ module Hangman
   class Game
     attr_accessor :solution, :board, :turns, :letter, :words
 
+    # replace the @words Array with a reference to an external file holding multiple words
     def initialize
       @solution = ""
       @board = Board.new

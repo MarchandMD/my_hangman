@@ -13,7 +13,7 @@ module Hangman
       @board = Board.new
       @turns = 0
       @letter = ""
-      @words = %w[cow hangman notebook lamp humidifier library bamboo tree bookshelf]
+      @words = huge_dictionary
     end
 
     def introduction
@@ -24,7 +24,7 @@ module Hangman
     end
 
     def play
-      self.solution = Solution.new(words.sample)
+      self.solution = Solution.new(words.sample.chomp)
       introduction
       user_choice == "p" ? display_board : display_instructions
       while board.letters.length.positive?
@@ -105,5 +105,15 @@ module Hangman
     def update_gallows(letter = nil)
       return "'#{letter}' is not in the solution" unless solution.value.include?(letter)
     end
+
+    def huge_dictionary
+      dictionary = File.open('dictionary.txt', 'r')
+      all_words = []
+      dictionary.readlines.each do |word|
+        all_words << word
+      end
+      all_words
+    end
+
   end
 end

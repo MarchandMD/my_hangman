@@ -5,7 +5,7 @@ require_relative "board"
 
 module Hangman
   class Game
-    attr_accessor :solution, :board, :turns, :letter, :words
+    attr_accessor :solution, :board, :turns, :letter, :words, :bad_guess
 
     # replace the @words Array with a reference to an external file holding multiple words
     def initialize
@@ -14,6 +14,7 @@ module Hangman
       @turns = 0
       @letter = ""
       @words = huge_dictionary
+      @bad_guess = 0
     end
 
     def introduction
@@ -103,7 +104,8 @@ module Hangman
     end
 
     def update_gallows(letter = nil)
-      return "'#{letter}' is not in the solution" unless solution.value.include?(letter)
+      self.bad_guess += 1
+      return "'#{letter}' is not in the solution; That is now #{bad_guess} bad guesses" unless solution.value.include?(letter)
     end
 
     def huge_dictionary

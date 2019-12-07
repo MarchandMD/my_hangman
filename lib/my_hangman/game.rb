@@ -28,7 +28,7 @@ module Hangman
       self.solution = Solution.new(words.sample.chomp)
       introduction
       user_choice == "p" ? display_board : display_instructions
-      while board.letters.length.positive?
+      while bad_guess < 9
         take_a_turn
         board.remove_letter(board.letters.index(letter))
         # if the letter is in the solution, #update_solution
@@ -42,6 +42,7 @@ module Hangman
           break
         end
       end
+      puts bad_guess == 9 ? "you lose" : nil
     end
 
     def user_choice(input = nil)

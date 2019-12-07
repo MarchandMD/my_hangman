@@ -37,5 +37,12 @@ module Hangman
         expect(new_board.letters[0]).to eq(" ")
       end
     end
+
+    context "#update_dude" do
+      it 'displays the entire hangman' do
+        board = Board.new
+        expect { board.update_dude(19) }.to output("hello").to_stdout
+      end
+    end
   end
 end

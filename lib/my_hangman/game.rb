@@ -65,6 +65,7 @@ module Hangman
       puts letter != "" ? update_gallows(letter) : nil
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
+      # update_gallows
       gallows
       puts "obscured secret word: #{solution.obscured.join(" ")}"
       puts "You're currently on turn #{turns + 1}"
@@ -89,9 +90,7 @@ module Hangman
     end
 
     def gallows
-      hangman = [" |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
-      puts " ______  "
-      puts " |    |  "
+      hangman = [" ______  "," |    |  "," |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
       puts "#{hangman[0]}"
       puts "#{hangman[1]}"
       puts "#{hangman[2]}"
@@ -99,12 +98,13 @@ module Hangman
       puts "#{hangman[4]}"
       puts "#{hangman[5]}"
       puts "#{hangman[6]}"
-      puts " |       "
-      puts " ------- "
+      puts "#{hangman[7]}"
+      puts "#{hangman[8]}"
     end
 
     def update_gallows(letter = nil)
-      self.bad_guess += 1
+     # letter != nil ? self.bad_guess += 1 : nil
+      # board.update_dude(bad_guess)
       return "'#{letter}' is not in the solution; That is now #{bad_guess} bad guesses" unless solution.value.include?(letter)
     end
 

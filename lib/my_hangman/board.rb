@@ -13,5 +13,11 @@ module Hangman
     def remove_letter(index = nil)
       letters[index] = " "
     end
+
+    def update_dude(bad_guesses = nil)
+      hangman = [" ______  "," |    |  "," |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
+      puts bad_guesses.nil? ? nil: hangman[0..bad_guesses]
+    end
+
   end
 end

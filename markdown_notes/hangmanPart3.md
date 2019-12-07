@@ -44,3 +44,40 @@ So...I need to think a little more about it.
 I mean, I think I sort of saw yesterday how to handle this. 
  
 I can't begin to explain how good this feels..... It's pride. I mean, maybe I can actually desribe how good it feels. 
+
+So really, the next thing I want to focus on is making the Hangman appear on the screen. 
+
+And I know I could use `File` objects to grab the files....and display the hangman....I might have a little more control over what get's displayed. 
+
+But do I want to make a bunch of unnecessary files? I mean, how else might I do it? 
+
+I think this is a good place for RSpec. Because I know I can...
+
+...but wait...I think I just got a step closer to the elegant solution....
+
+just doing
+
+```ruby
+arr = [1, 2, 3, 4, 5, 6]
+
+puts arr
+```
+
+results in 
+
+```ruby
+1
+2
+3
+4
+5
+6
+```
+
+And that's exactly what I'm trying to make happen: 
+
+i'm trying to make an array display vertically... so maybe all I need to do...is ...
+
+Well, how would I make someone lose a game?
+
+That's downstream. For now, focus on the construction of the hangman...

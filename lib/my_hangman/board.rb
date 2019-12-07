@@ -6,7 +6,7 @@ module Hangman
   class Board
     attr_accessor :letters
 
-    def initialize(letters = [*('A'..'Z')])
+    def initialize(letters = [*("A".."Z")])
       @letters = letters
     end
 
@@ -14,10 +14,9 @@ module Hangman
       letters[index] = " "
     end
 
-    def update_dude(bad_guesses = nil)
-      hangman = [" ______  "," |    |  "," |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
-      puts bad_guesses.nil? ? nil: hangman[0..bad_guesses]
+    def update_dude(bad_guesses)
+      hangman = [" ______  ", " |    |  ", " |    -  ", " |   | | ", " |    =  ", " |    |  ", " |   -|- ", " |    |  ", " |   / \\"]
+     puts hangman[0..bad_guesses - 1]
     end
-
   end
 end

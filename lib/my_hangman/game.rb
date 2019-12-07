@@ -65,8 +65,7 @@ module Hangman
       puts letter != "" ? update_gallows(letter) : nil
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
-      # update_gallows
-      gallows
+      bad_guess == 0 ? nil : board.update_dude(bad_guess)
       puts "obscured secret word: #{solution.obscured.join(" ")}"
       puts "You're currently on turn #{turns + 1}"
     end
@@ -77,7 +76,6 @@ module Hangman
         input ||= gets.chomp.upcase
         input.length != 1 || !board.letters.include?(input) ? input = nil : break
         puts "invalid entry. Try again: "
-        # input == solution.value.join('') ? that's it! : update_gallows
       end
       @turns += 1
       self.letter = input
@@ -103,9 +101,11 @@ module Hangman
     end
 
     def update_gallows(letter = nil)
-     # letter != nil ? self.bad_guess += 1 : nil
-      # board.update_dude(bad_guess)
-      return "'#{letter}' is not in the solution; That is now #{bad_guess} bad guesses" unless solution.value.include?(letter)
+      if !solution.value.include?(letter)
+        # board.update_dude(bad_guess)
+        self.bad_guess += 1
+      end 
+      return "'#{letter}' is not in the solution; That is now #{bad_guess} bad guesses, and the dude shoud be updated" unless solution.value.include?(letter)
     end
 
     def huge_dictionary

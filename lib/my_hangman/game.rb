@@ -73,17 +73,17 @@ module Hangman
 
     # option to save goes here in this method....
     def take_a_turn(input = nil)
-      puts "want to save the game? (y/n)"
-      loop do
-        save = gets.chomp.downcase
-        if save == 'y'
-          puts "i'm going to save this game"
-          break
-        else
-          puts "not saving"
-          break
-        end
-      end
+      # puts "want to save the game? (y/n)"
+      # loop do
+      #   save = gets.chomp.downcase
+      #   if save == 'y'
+      #     puts "i'm going to save this game"
+      #     break
+      #   else
+      #     puts "not saving"
+      #     break
+      #   end
+      # end
       print "Guess a letter: "
       loop do
         input ||= gets.chomp.upcase

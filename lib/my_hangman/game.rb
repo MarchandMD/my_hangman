@@ -67,7 +67,7 @@ module Hangman
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
       bad_guess == 0 ? nil : board.update_dude(bad_guess)
-      puts "obscured secret word: #{solution.obscured.join(" ")}"
+      puts "\n\n\nobscured secret word: #{solution.obscured.join(" ")}"
       puts "You're currently on turn #{turns + 1}"
     end
 

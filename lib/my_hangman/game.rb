@@ -20,7 +20,7 @@ module Hangman
     def introduction
       puts "\nH A N G M A N\n\n"
       gallows
-      puts "(p)lay"
+      puts "\n\n(p)lay"
       puts "(i)structions\n\n"
     end
 
@@ -67,7 +67,7 @@ module Hangman
       puts "Remaining Letters: "
       puts board.letters.join(" ") + "\n\n"
       bad_guess == 0 ? nil : board.update_dude(bad_guess)
-      puts "\n\n\nobscured secret word: #{solution.obscured.join(" ")}"
+      puts "\n\n\nobscured secret word: #{solution.obscured.join(" ")}\n\n"
       puts "You're currently on turn #{turns + 1}"
     end
 

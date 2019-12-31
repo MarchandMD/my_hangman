@@ -1,8 +1,10 @@
 # MyHangman
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/my_hangman`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to my Hangman gem! 
 
-TODO: Delete this and the text above, and describe your gem
+I am learning how to build with the Ruby language, and Gems just happen to be where I currently am with my self-education. 
+
+If this is actually a ruby gem on rubygems.org...then I actually apologize, because I don't really know what I'm doing...
 
 ## Installation
 

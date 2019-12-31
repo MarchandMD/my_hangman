@@ -21,8 +21,10 @@ module Hangman
     def introduction
       puts "\nH A N G M A N\n\n"
       gallows
-      puts "\n\n(p)lay"
+      puts "\n\n(p)lay new game\n"
+      # puts "(l)oad saved game\n"
       puts "(i)structions\n\n"
+
     end
 
     def play(serialized_solution = words.sample.chomp)

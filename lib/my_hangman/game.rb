@@ -26,17 +26,23 @@ module Hangman
       puts "(i)structions\n\n"
     end
 
-    def play(serialized_solution = words.sample.chomp)
-      self.solution = Solution.new(serialized_solution)
-      # user_choice == "p" ? display_board : display_instructions
+    def play_load_or_instruct
       case user_choice
       when "p"
+        self.solution = Solution.new(words.sample.chomp)
         display_board
+        play
       when "l"
+        # load_game
         puts "you pushed L"
       when "i"
         display_instructions
+        self.solution = Solution.new(words.sample.chomp)
+        play
       end
+    end
+
+    def play
       while bad_guess < 9
         take_a_turn
         board.remove_letter(board.letters.index(letter))

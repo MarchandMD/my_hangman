@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'yaml'
 require_relative "solution"
 require_relative "board"
 
@@ -31,8 +32,6 @@ module Hangman
       while bad_guess < 9
         take_a_turn
         board.remove_letter(board.letters.index(letter))
-        # if the letter is in the solution, #update_solution
-        # if the letter is NOT in the solution, #update_gallows
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?("_")
           display_board
@@ -73,17 +72,18 @@ module Hangman
 
     # option to save goes here in this method....
     def take_a_turn(input = nil)
-      # puts "want to save the game? (y/n)"
-      # loop do
-      #   save = gets.chomp.downcase
-      #   if save == 'y'
-      #     puts "i'm going to save this game"
-      #     break
-      #   else
-      #     puts "not saving"
-      #     break
-      #   end
-      # end
+      puts "want to save the game? (y/n)"
+      loop do
+        save = gets.chomp.downcase
+        if save == 'y'
+          saved_file = File.new("#{solution.value.join}.yaml", 'w+')
+          puts "i'm going to save this game"
+          break
+        else
+          puts "not saving"
+          break
+        end
+      end
       print "Guess a letter: "
       loop do
         input ||= gets.chomp.upcase

@@ -1,0 +1,19 @@
+--- !ruby/object:Hangman::Solution
+value:
+- J
+- E
+- W
+- E
+- L
+- L
+- E
+- R
+obscured:
+- _
+- E
+- _
+- E
+- _
+- _
+- E
+- _

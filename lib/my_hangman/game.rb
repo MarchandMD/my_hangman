@@ -77,6 +77,10 @@ module Hangman
         save = gets.chomp.downcase
         if save == 'y'
           saved_file = File.new("#{solution.value.join}.yaml", 'w+')
+
+          serialized_data = YAML.dump(@solution)
+          saved_file.puts serialized_data
+          saved_file.close
           puts "i'm going to save this game"
           break
         else

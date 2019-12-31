@@ -28,8 +28,15 @@ module Hangman
 
     def play(serialized_solution = words.sample.chomp)
       self.solution = Solution.new(serialized_solution)
-      # introduction
-      user_choice == "p" ? display_board : display_instructions
+      # user_choice == "p" ? display_board : display_instructions
+      case user_choice
+      when "p"
+        display_board
+      when "l"
+        puts "you pushed L"
+      when "i"
+        display_instructions
+      end
       while bad_guess < 9
         take_a_turn
         board.remove_letter(board.letters.index(letter))
@@ -42,13 +49,13 @@ module Hangman
           break
         end
       end
-      puts bad_guess == 9 ? "you lose" : nil
+      puts bad_guess == 9 ? "you lose :( The secret word was: #{solution.value.join}" : nil
     end
 
     def user_choice(input = nil)
       loop do
         input ||= gets.chomp.downcase
-        break if %w[p i].include?(input)
+        break if %w[p i l].include?(input)
 
         puts "invalid. (p)lay or (i)nstructions"
         input = nil

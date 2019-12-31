@@ -24,8 +24,8 @@ module Hangman
       puts "(i)structions\n\n"
     end
 
-    def play(serialized_solution = Solution.new(words.sample.chomp))
-      self.solution = serialized_solution
+    def play(serialized_solution = words.sample.chomp)
+      self.solution = Solution.new(serialized_solution)
       introduction
       user_choice == "p" ? display_board : display_instructions
       while bad_guess < 9

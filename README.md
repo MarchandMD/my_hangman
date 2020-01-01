@@ -24,6 +24,8 @@ Or install it yourself as:
 
 ## Usage
 
+Warning: this button to "run on Repl.it" has produced mixed results...
+
 [![Run on Repl.it](https://repl.it/badge/github/MarchandMD/my_hangman)](https://repl.it/github/MarchandMD/my_hangman)
 
 If you have the repo for this project on your desktop, open up your terminal app.  

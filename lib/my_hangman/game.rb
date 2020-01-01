@@ -8,7 +8,6 @@ module Hangman
   class Game
     attr_accessor :solution, :board, :turns, :letter, :words, :bad_guess
 
-    # replace the @words Array with a reference to an external file holding multiple words
     def initialize
       @solution = ""
       @board = Board.new
@@ -22,7 +21,7 @@ module Hangman
       puts "\nH A N G M A N\n\n"
       gallows
       puts "\n\n(p)lay new game\n"
-      # puts "(l)oad saved game\n"
+      puts "(l)oad saved game\n"
       puts "(i)structions\n\n"
     end
 
@@ -34,6 +33,7 @@ module Hangman
         play
       when "l"
         self.solution = Solution.new(load_game)
+        display_board
         play
       when "i"
         display_instructions

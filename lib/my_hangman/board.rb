@@ -10,7 +10,7 @@ module Hangman
       @letters = letters
     end
 
-    def remove_letter(index = nil)
+    def remove_letter(index)
       letters[index] = " "
     end
 

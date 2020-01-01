@@ -45,6 +45,7 @@ module Hangman
     def play
       while bad_guess < 9
         take_a_turn
+
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?("_")
@@ -75,7 +76,7 @@ module Hangman
 
     def load_game
       puts "you pushed L"
-      loaded_data = YAML.load File.read('JEWELLER.yaml')
+      loaded_data = YAML.load File.read("JEWELLER.yaml")
       loaded_data.value.join
     end
 
@@ -111,14 +112,17 @@ module Hangman
       print "Guess a letter: "
       loop do
         input ||= gets.chomp.upcase
-        if input.length != 1 || !board.letters.include?(input)
+        if input == "SAVE"
+          puts "you want to save"
+          break
+        elsif input.length != 1 || !board.letters.include?(input)
           puts "invalid entry. Try again: "
+          input = nil
         else
           @turns += 1
           self.letter = input
           break
         end
-        input = nil
       end
     end
 

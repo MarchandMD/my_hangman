@@ -33,8 +33,8 @@ module Hangman
         display_board
         play
       when "l"
-        # load_game
-        puts "you pushed L"
+        self.solution = Solution.new(load_game)
+        play
       when "i"
         display_instructions
         self.solution = Solution.new(words.sample.chomp)
@@ -71,6 +71,12 @@ module Hangman
 
     def display_instructions
       puts "you play hangman"
+    end
+
+    def load_game
+      puts "you pushed L"
+      loaded_data = YAML.load File.read('JEWELLER.yaml')
+      loaded_data.value.join
     end
 
     def display_board

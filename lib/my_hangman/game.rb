@@ -32,14 +32,14 @@ module Hangman
         display_board
         play
       when "l"
-        self.solution = Solution.new(load_game)
-        display_board
-        play
+        load_game
       when "i"
         display_instructions
         self.solution = Solution.new(words.sample.chomp)
         play
       end
+      display_board
+      play
     end
 
     def play
@@ -75,8 +75,12 @@ module Hangman
 
     def load_game
       puts "you pushed L"
-      loaded_data = YAML.load File.read("saved_game.yaml")
-      loaded_data.value.join
+      loaded_data = YAML.load_stream File.read("saved_game.yaml")
+      self.solution = Solution.new(loaded_data[0].value.join)
+      self.solution.obscured = loaded_data[0].obscured
+      self.board = loaded_data[1]
+      self.turns = loaded_data[2]
+      self.bad_guess = loaded_data[3]
     end
 
     def display_board
@@ -157,7 +161,7 @@ module Hangman
       saved_file = File.new("saved_game.yaml", "w+")
       game_data = [solution, board, turns, bad_guess]
       game_data.each do |game_var|
-        saved_file.puts YAML.dump(game_var)
+        saved_file.puts YAML.dump(game_var) + "\n"
       end
       saved_file.close
     end

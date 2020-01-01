@@ -1,47 +1,53 @@
 --- !ruby/object:Hangman::Solution
 value:
-- D
-- E
-- M
-- A
-- G
-- O
-- G
+- T
+- I
+- C
+- K
+- L
+- I
+- S
+- H
 obscured:
-- D
-- E
-- M
-- A
-- G
+- T
+- I
+- C
+- K
+- L
+- I
 - _
-- G
+- _
+
 --- !ruby/object:Hangman::Board
 letters:
 - " "
-- B
-- C
 - " "
+- " "
+- D
 - " "
 - F
-- " "
+- G
 - H
-- I
-- J
-- K
-- L
 - " "
+- J
+- " "
+- " "
+- M
 - N
-- O
+- " "
 - P
 - Q
 - R
 - S
-- T
-- U
+- " "
+- " "
 - V
 - W
 - X
 - Y
 - Z
+
+--- 10
+
 --- 5
---- 0
+

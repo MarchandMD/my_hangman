@@ -1,0 +1,2 @@
+language = "ruby"
+run = "cd lib/my_hangman && ruby run_this_file.rb"

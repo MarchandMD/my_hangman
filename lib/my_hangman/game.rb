@@ -45,7 +45,6 @@ module Hangman
     def play
       while bad_guess < 9
         take_a_turn
-
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
         if solution.obscured.any?("_")
@@ -76,7 +75,7 @@ module Hangman
 
     def load_game
       puts "you pushed L"
-      loaded_data = YAML.load File.read("JEWELLER.yaml")
+      loaded_data = YAML.load File.read("saved_game.yaml")
       loaded_data.value.join
     end
 
@@ -91,21 +90,12 @@ module Hangman
       puts "You're currently on turn #{turns + 1}"
     end
 
-    # option to save goes here in this method....
+    # use the commented code to develop a save_game method
     def take_a_turn(input = nil)
-      # puts "want to save the game? (y/n)"
-      # loop do
+
       #   save = gets.chomp.downcase
       #   if save == 'y'
-      #     saved_file = File.new("#{solution.value.join}.yaml", 'w+')
-
-      #     serialized_data = YAML.dump(@solution)
-      #     saved_file.puts serialized_data
-      #     saved_file.close
       #     puts "i'm going to save this game"
-      #     break
-      #   else
-      #     puts "not saving"
       #     break
       #   end
       # end
@@ -113,7 +103,8 @@ module Hangman
       loop do
         input ||= gets.chomp.upcase
         if input == "SAVE"
-          puts "you want to save"
+          save_game
+          puts "GAME SAVED!"
           break
         elsif input.length != 1 || !board.letters.include?(input)
           puts "invalid entry. Try again: "
@@ -160,6 +151,15 @@ module Hangman
         all_words << word
       end
       all_words
+    end
+
+    def save_game
+      saved_file = File.new("saved_game.yaml", "w+")
+      game_data = [solution, board, turns, bad_guess]
+      game_data.each do |game_var|
+        saved_file.puts YAML.dump(game_var)
+      end
+      saved_file.close
     end
   end
 end

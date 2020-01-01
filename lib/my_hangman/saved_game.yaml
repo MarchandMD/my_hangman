@@ -1,0 +1,47 @@
+--- !ruby/object:Hangman::Solution
+value:
+- D
+- E
+- M
+- A
+- G
+- O
+- G
+obscured:
+- D
+- E
+- M
+- A
+- G
+- _
+- G
+--- !ruby/object:Hangman::Board
+letters:
+- " "
+- B
+- C
+- " "
+- " "
+- F
+- " "
+- H
+- I
+- J
+- K
+- L
+- " "
+- N
+- O
+- P
+- Q
+- R
+- S
+- T
+- U
+- V
+- W
+- X
+- Y
+- Z
+--- 5
+--- 0

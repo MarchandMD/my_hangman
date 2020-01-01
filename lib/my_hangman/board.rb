@@ -11,7 +11,9 @@ module Hangman
     end
 
     def remove_letter(index)
-      letters[index] = " "
+      if !index.nil?
+        letters[index] = " "
+      end
     end
 
     def update_dude(bad_guesses)

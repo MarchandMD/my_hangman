@@ -24,7 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+If you have the repo for this project on your desktop, open up your terminal app.  
+
+CD into the `my_hangman/lib/my_hangman/` directory  
+
+from the terminal, you can now run `ruby run_this_file.rb`  
+
+play to your hearts content! :)
 
 ## Development
 

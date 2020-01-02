@@ -33,13 +33,13 @@ module Hangman
         play
       when "l"
         load_game
+        display_board
+        play
       when "i"
         display_instructions
         self.solution = Solution.new(words.sample.chomp)
         play
       end
-      display_board
-      play
     end
 
     def play
@@ -47,15 +47,15 @@ module Hangman
         take_a_turn
         board.remove_letter(board.letters.index(letter))
         update_solution(solution.value, solution.obscured, letter)
-        if solution.obscured.any?("_")
+        if solution.obscured.any?("_") && bad_guess != 9
           display_board
         else
           puts "obscured secret word: #{solution.obscured.join(" ")}"
           puts "YOU WIN!"
           break
         end
+        puts bad_guess == 9 ? "you lose :( The secret word was: #{solution.value.join}" : nil
       end
-      puts bad_guess == 9 ? "you lose :( The secret word was: #{solution.value.join}" : nil
     end
 
     def user_choice(input = nil)
@@ -96,13 +96,6 @@ module Hangman
 
     # use the commented code to develop a save_game method
     def take_a_turn(input = nil)
-
-      #   save = gets.chomp.downcase
-      #   if save == 'y'
-      #     puts "i'm going to save this game"
-      #     break
-      #   end
-      # end
       print "Guess a letter: "
       loop do
         input ||= gets.chomp.upcase

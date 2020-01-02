@@ -30,16 +30,14 @@ module Hangman
       when "p"
         self.solution = Solution.new(words.sample.chomp)
         display_board
-        play
       when "l"
         load_game
         display_board
-        play
       when "i"
         display_instructions
         self.solution = Solution.new(words.sample.chomp)
-        play
       end
+      play
     end
 
     def play
@@ -58,12 +56,14 @@ module Hangman
       end
     end
 
+    # determines how user initiates a game by returning (p)lay, (l)oad, or (i)nstructions  
+    #  
+    # can be passed an 'input' parameter for testing purposes
     def user_choice(input = nil)
       loop do
         input ||= gets.chomp.downcase
         break if %w[p i l].include?(input)
-
-        puts "invalid. (p)lay or (i)nstructions"
+        puts "invalid. (p)lay, (l)oad, or (i)nstructions"
         input = nil
       end
       input

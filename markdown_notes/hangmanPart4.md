@@ -155,3 +155,25 @@ So the first thing I want to do is see what existing tests I have for it.
 Ok, so I've written several tests for the `Board` class, and I feel like I've completely written everything I need to for the `Board` class, aside from testing of the `#update_dude` method...but I'm not really sure I know how or need to. 
 
 I don't even know if that's a method that needs to be on the `Board`. I mean, I feel like that might be more something for the `Game` to do....but for now I'll leave it the way it is. 
+
+## the `Game` class
+I feel like this class holds the greatest amount of potential for re-factoring. Because right now, I feel like it's a little sloppy. So, I'll go over it little by little. 
+
+The first thing I'd really like to do...is re-locate the `Dictionary.txt` file...and I don't know why. 
+
+I mean, I feel like, what I wnat to do is relocate the dictionary to the main directory.....but I currently have the REPL setup to use this....but what would it take to update this? 
+
+I'd have to: 
+
+1. Move the dictionary
+2. Update the `.replit` file
+3. Update the `readme`
+4. Update the link in `TOP`...
+
+I'm not really going to make any changes to the "TOP" project, until my initial PRs are accepted. Then I'd look into it. But the way I see it, there's like, at least 2 months of pull requests waiting to be merged into the project. Like, what the hell? 
+
+But Robert's stuff was pulled in. So I should be able to do the same. 
+
+Um, so, yeah, push through these last few tests, so I can go ahead and move on to the next section. 
+
+Ok, so I feel like I'm doing two layers of validation with the 

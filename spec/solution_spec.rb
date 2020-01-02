@@ -20,5 +20,11 @@ module Hangman
         expect(game_solution.value.join('')).to eq('DOUGHNUTS')
       end
     end
+    context '#obscured' do
+      it 'converts the default value to dashes' do
+        test_solution = Solution.new("testing")
+        test_solution.obscured.each { |x| expect(x).to eq("_") }
+      end
+    end
   end
 end

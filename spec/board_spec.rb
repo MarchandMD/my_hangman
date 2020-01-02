@@ -5,25 +5,26 @@ require "spec_helper.rb"
 module Hangman
   RSpec.describe Board do
     context "#initialize" do
-      it "is initialized with an array by default in @letters" do
+      it "has '@letters' attribute" do
+        new_board = Board.new
+        expect(new_board).to have_attributes(:letters => [*("A".."Z")])
+      end
+    end
+
+    context "#letters" do
+      
+      it "is an Array" do
         new_board = Board.new
         expect(new_board.letters).to be_an(Array)
       end
 
-      context "#letters" do
-        it "contains the entire alphabet, by default" do
-          new_board = Board.new
-          expect(new_board.letters.length).to be(26)
-        end
-
-        it "starts with 'A' and ends with 'Z'" do
-          new_board = Board.new
-          expect(new_board.letters[0]).to eq("A")
-        end
+      it "contains the entire alphabet, by default" do
+        new_board = Board.new
+        the_alphabet = [*("A".."Z")]
+        expect(the_alphabet.include?(new_board.letters.sample)).to be_truthy 
       end
 
-      # want to be able to pass incomplete alphabets, for testing
-      it "can be initialized with a parameter, passed to @letters" do
+      it "can be initialized with a partial alphabet" do
         partial_alphabet = [*("A".."M")]
         new_board = Board.new(partial_alphabet)
         expect(new_board.letters).to eq(partial_alphabet)
@@ -41,8 +42,9 @@ module Hangman
     context "#update_dude" do
       it 'displays the entire hangman' do
         board = Board.new
-        expect { board.update_dude(19) }.to output("hello").to_stdout
+        expect { board.update_dude(19) }.to output(" ______  \n |    |  \n |    -  \n |   | | \n |    =  \n |    |  \n |   -|- \n |    |  \n |   / \\\n").to_stdout
       end
+      
     end
   end
 end

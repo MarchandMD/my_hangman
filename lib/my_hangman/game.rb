@@ -70,7 +70,8 @@ module Hangman
     end
 
     def display_instructions
-      puts "you play hangman"
+      puts "you play hangman\n\n"
+puts "if you want to save, type 'save'\n"
     end
 
     def load_game

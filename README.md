@@ -1,50 +1,42 @@
 # MyHangman
 
-Welcome to my Hangman gem! 
+This was built as a Gem, though it functions as a basic command line program.
 
-I am learning how to build with the Ruby language, and Gems just happen to be where I currently am with my self-education. 
+It's the classic hangman game that choses a word from a (large-ish) dictionary.
 
-If this is actually a ruby gem on rubygems.org...then I actually apologize, because I don't really know what I'm doing...
+Give it a shot!
 
-## Installation
 
-Add this line to your application's Gemfile:
+## Play the Game - locally
 
-```ruby
-gem 'my_hangman'
+easiest way is to clone this to your local machine:
+
+```
+git clone git@github.com:MarchandMD/my_hangman.git
 ```
 
-And then execute:
+and then CD into the `my_hangman/lib/my_hangman`
+From there you'll be able to:
 
-    $ bundle
+```
+ruby run_this_file.rb
+```
 
-Or install it yourself as:
 
-    $ gem install my_hangman
-
-## Usage
+## Play the Game - on REPL.IT
 
 Warning: this button to "run on Repl.it" has produced mixed results...
 
 [![Run on Repl.it](https://repl.it/badge/github/MarchandMD/my_hangman)](https://repl.it/github/MarchandMD/my_hangman)
 
-If you have the repo for this project on your desktop, open up your terminal app.  
+If you have the repo for this project on your desktop, open up your terminal app.
 
-CD into the `my_hangman/lib/my_hangman/` directory  
+CD into the `my_hangman/lib/my_hangman/` directory
 
-from the terminal, you can now run `ruby run_this_file.rb`  
+from the terminal, you can now run `ruby run_this_file.rb`
 
 play to your hearts content! :)
 
-## Development
-
-So, I built this as a Gem...but I doubt i've done all the necessary things to have it appear on rubygems.org; In fact, I've checked and it's not there.   
-
-But if you want to re-factor or make some changes, feel free to open a PR! 
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/MarchandMD/my_hangman.
 
 ## License
 

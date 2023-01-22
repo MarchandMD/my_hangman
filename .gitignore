@@ -9,4 +9,5 @@
 
 # rspec failure tracking
 .rspec_status
-/markdown_notes 
+/markdown_notes
+hangmanGem.md
